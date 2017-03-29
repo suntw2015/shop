@@ -6,7 +6,8 @@ class User extends APP_Controller{
 	}
 
 	 public function index(){
-		 $str = "I am a student,study";
-		 echo str_replace(array('student','study'),'q',$str);
+		 $this->render("user/index.tpl",array(
+			 'title'	=> 'manage'
+		 ));
 	 }
 }
