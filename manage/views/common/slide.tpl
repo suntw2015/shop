@@ -1,10 +1,9 @@
 <ul class="nav nav-list">
-
     {foreach from=$menu_list item=menu}
     <li>
         <a href="{$menu['href']}" class="dropdown-toggle">
-            <i class="{$me}"></i>
-            <span class="menu-text">{$item['title']}</span>
+            <i class="{$menu['class']}"></i>
+            <span class="menu-text">{$menu['title']}</span>
 
             <b class="arrow icon-angle-down"></b>
         </a>
@@ -13,11 +12,12 @@
         <ul class="submenu">
             {foreach from=$menu['submenu'] item=submenu}
             <li>
-                <a href="tables.html">
+                <a href="{$submenu['href']}">
                     <i class="icon-double-angle-right"></i>
                     {$submenu['title']}
                 </a>
             </li>
+            {/foreach}
         </ul>
         {/if}
     </li>

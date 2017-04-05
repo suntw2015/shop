@@ -5,6 +5,7 @@ $config['menu_list'] = array(
         'title' => 'menu1',
         'icon'  => '',
         'href'  => '#',
+        'class' => '',
         'submenu'   => array(
             array(
                 'title' => 'sub11',
@@ -16,20 +17,22 @@ $config['menu_list'] = array(
         'title' => 'menu2',
         'icon'  => '',
         'href'  => '#',
+        'class' => '',
         'submenu'   => array(
             array(
-                'title' => 'sub11',
+                'title' => 'sub21',
                 'href'  => '#'
             )
         )
     ),
     array(
-        'title' => 'menu1',
+        'title' => 'menu3',
         'icon'  => '',
         'href'  => '#',
+        'class' => '',
         'submenu'   => array(
             array(
-                'title' => 'sub11',
+                'title' => 'sub31',
                 'href'  => '#'
             )
         )

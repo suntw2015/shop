@@ -1,26 +1,30 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-29 17:05:55
+/* Smarty version 3.1.31, created on 2017-03-29 18:14:57
   from "/server/www/self/shop/manage/views/common/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58db78f387c488_95525755',
+  'unifunc' => 'content_58db892134b9f5_52564517',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '973a3baedbad0f6b9af3b075325f18a1f3624b3c' => 
     array (
       0 => '/server/www/self/shop/manage/views/common/index.tpl',
-      1 => 1490778344,
+      1 => 1490782172,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:common/slide.tpl' => 1,
+    'file:common/bread.tpl' => 1,
   ),
 ),false)) {
-function content_58db78f387c488_95525755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58db892134b9f5_52564517 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -169,7 +173,9 @@ echo $_smarty_tpl->tpl_vars['description']->value;
 						</div>
 					</div><!-- #sidebar-shortcuts -->
 
-					<include file='common/slide.tpl'>
+					<?php $_smarty_tpl->_subTemplateRender('file:common/slide.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 					<div class="sidebar-collapse" id="sidebar-collapse">
 						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
@@ -177,89 +183,20 @@ echo $_smarty_tpl->tpl_vars['description']->value;
 				</div>
 
 				<div class="main-content">
-					<div class="breadcrumbs" id="breadcrumbs">
+					<?php $_smarty_tpl->_subTemplateRender('file:common/bread.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
-						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home home-icon"></i>
-								<a href="#">首页</a>
-							</li>
-							<li class="active">控制台</li>
-						</ul><!-- .breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="icon-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- #nav-search -->
-					</div>
 
 					<div class="page-content">
-						<div class="page-header">
-							<h1>
-								控制台
-								<small>
-									<i class="icon-double-angle-right"></i>
-									 查看
-								</small>
-							</h1>
-						</div><!-- /.page-header -->
+						<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_97151596258db892133ef30_28471119', 'content');
+?>
+
 
 						<div class="row">
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
-
-				<div class="ace-settings-container" id="ace-settings-container">
-					<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-						<i class="icon-cog bigger-150"></i>
-					</div>
-
-					<div class="ace-settings-box" id="ace-settings-box">
-						<div>
-							<div class="pull-left">
-								<select id="skin-colorpicker" class="hide">
-									<option data-skin="default" value="#438EB9">#438EB9</option>
-									<option data-skin="skin-1" value="#222A2D">#222A2D</option>
-									<option data-skin="skin-2" value="#C6487E">#C6487E</option>
-									<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-								</select>
-							</div>
-							<span>&nbsp; 选择皮肤</span>
-						</div>
-
-						<div>
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-							<label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
-						</div>
-
-						<div>
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-							<label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
-						</div>
-
-						<div>
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-							<label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
-						</div>
-
-						<div>
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-							<label class="lbl" for="ace-settings-rtl">切换到左边</label>
-						</div>
-
-						<div>
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-							<label class="lbl" for="ace-settings-add-container">
-								切换窄屏
-								<b></b>
-							</label>
-						</div>
-					</div>
-				</div><!-- /#ace-settings-container -->
 			</div><!-- /.main-container-inner -->
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
@@ -358,7 +295,21 @@ echo $_smarty_tpl->tpl_vars['description']->value;
  src="assets/js/ace.min.js"><?php echo '</script'; ?>
 >
 </body>
-</html>
+</html><?php }
+/* {block 'content'} */
+class Block_97151596258db892133ef30_28471119 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_97151596258db892133ef30_28471119',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-<?php }
+						<?php
+}
+}
+/* {/block 'content'} */
 }
