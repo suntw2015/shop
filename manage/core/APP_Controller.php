@@ -18,7 +18,7 @@ class APP_Controller extends CI_Controller{
 	}
 
 	public function check_auth(){
-		$token = get_cookie('token');echo json_encode($_COOKIE);exit;
+		$token = get_cookie('token');
 
 		if(empty($token)){
 			$this->redirect('/user/login');exit;

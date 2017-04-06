@@ -49,7 +49,7 @@ class User_Model extends APP_Model{
             $this->return_error($result['error_reason']);
         }
 
-        return $result;
+        return $this->return_success($result);
     }
 
     public function create($data){

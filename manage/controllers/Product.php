@@ -7,6 +7,6 @@ class Product extends APP_Controller{
 	}
 
 	public function index(){
-		
+		echo "aaa";exit;
 	}
 }
