@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-03-29 18:14:57
+/* Smarty version 3.1.31, created on 2017-04-06 18:28:04
   from "/server/www/self/shop/manage/views/common/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58db892134b9f5_52564517',
+  'unifunc' => 'content_58e618342a8dd0_10706524',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '973a3baedbad0f6b9af3b075325f18a1f3624b3c' => 
     array (
       0 => '/server/www/self/shop/manage/views/common/index.tpl',
-      1 => 1490782172,
+      1 => 1491474462,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common/bread.tpl' => 1,
   ),
 ),false)) {
-function content_58db892134b9f5_52564517 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58e618342a8dd0_10706524 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -98,7 +98,8 @@ echo $_smarty_tpl->tpl_vars['description']->value;
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<span class="user-info">
 									<small>欢迎光临,</small>
-									Jason
+									<?php echo $_smarty_tpl->tpl_vars['user_info']->value['username'];?>
+
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -189,7 +190,7 @@ echo $_smarty_tpl->tpl_vars['description']->value;
 
 					<div class="page-content">
 						<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_97151596258db892133ef30_28471119', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_96938740758e6183429c547_91601337', 'content');
 ?>
 
 
@@ -297,12 +298,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_97151596258db89213
 </body>
 </html><?php }
 /* {block 'content'} */
-class Block_97151596258db892133ef30_28471119 extends Smarty_Internal_Block
+class Block_96938740758e6183429c547_91601337 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_97151596258db892133ef30_28471119',
+    0 => 'Block_96938740758e6183429c547_91601337',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

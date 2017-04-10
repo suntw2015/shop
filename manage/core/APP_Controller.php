@@ -29,12 +29,15 @@ class APP_Controller extends CI_Controller{
 		if(!isset($userInfo['code']) || $userInfo['code'] != 0){
 			$this->redirect('/user/login');
 		}
+
+		$this->userInfo = $userInfo['data'];
 	}
 
 	public function format_menu(){
 		$this->config->load('menu_list');
 		$menu_list = $this->config->item('menu_list');
 		$this->assign('menu_list',$menu_list);
+		$this->assign('user_info',$this->userInfo);
 	}
 
 	public function assign($key,$value){

@@ -7,6 +7,8 @@ class Product extends APP_Controller{
 	}
 
 	public function index(){
-		echo "aaa";exit;
+		$this->render('product/index.tpl',array(
+			'title'	=> '产品列表'
+		));
 	}
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{if empty($title)}Shop管理系统{else}$title{/if}</title>
+		<title>{if empty($title)}Shop管理系统{else}{$title}{/if}</title>
 		<meta name="keywords" content="{if !empty($keywords)}{$keywords}{/if}" />
 		<meta name="description" content="{if !empty($description)}{$description}{/if}" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,7 +60,7 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<span class="user-info">
 									<small>欢迎光临,</small>
-									Jason
+									{$user_info['username']}
 								</span>
 
 								<i class="icon-caret-down"></i>
