@@ -2,13 +2,13 @@
 
 $config['menu_list'] = array(
     array(
-        'title' => 'menu1',
+        'title' => '商铺',
         'icon'  => '',
         'href'  => '#',
         'class' => '',
         'submenu'   => array(
             array(
-                'title' => 'sub11',
+                'title' => '商铺管理',
                 'href'  => '#'
             )
         )

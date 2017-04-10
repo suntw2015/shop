@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <title>title</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script src="/assets/js/flexible.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
+    <link href="/assets/css/vendor.css" rel="stylesheet">
+    <link href="/assets/css/shop.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="main">
+    <div>
+        <div class="shop-header-container_qVoLT_0">
+            <div class="shop-header-background_2cwiR_0" style="background-image: url(&quot;//fuss10.elemecdn.com/9/da/99e61b6978553324d485a70c67ebapng.png?imageMogr/format/webp/thumbnail/!40p/blur/50x40/&quot;);">
+            </div> 
+            <nav class="shop-header-navBar_ibFIP_0">
+                <a href="javascript:;">
+                    <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use>
+                    </svg>
+                </a>
+            </nav> 
+            <div class="shop-header-main_1B2kH_0">
+                <img class="shop-header-logo_3woDQ_0" src="{$shop.cover_img}"> 
+                <div class="shop-header-content_3UjPs_0">
+                    <h2 class="shop-header-shopName_2QrHh_0">{$shop.name}</h2> 
+                    
+                    {if !empty($shop.delivery)}
+                    <p class="shop-header-delivery_1mcTe_0">
+                        {foreach from=$shop.delivery item=delivery}
+                        <span class="shop-header-deliveryItem_Fari3_0">
+                            {$delivery}
+                        </span> 
+                        {/foreach}
+                    </p>
+                    {/if} 
+                {if !empty($shop.notice)}                    
+                <div class="shop-header-notice_2DzmG_0">
+                    <span>公告：</span>
+                    <span>{$shop.notice}</span>
+                </div>
+                {/if}
+            </div> 
+            <svg class="shop-header-detailIcon_1IXZI_0"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
+        </div> 
+        
+        {if !empty($shop.activity)}
+        <div class="shop-header-activities_3NWG9_0">
+            <div class="activity-activityWrap_1u6b1_0 activity-nowrap_2JDU4_0 shop-header-activityRow_fbfAg_0">
+                <i class="activity-activityIcon_1iJyG_0" style="background-color: rgb(112, 188, 70); color: rgb(255, 255, 255); border-color: rgb(112, 188, 70);">
+                    {$shop.activity.icon}
+                </i> 
+                <span class="activity-description_2q8qg_0">
+                    <span>{$shop.activity.desc}</span> 
+                </span>
+            </div> 
+            <!--<div class="shop-header-activityCount_tCsbf_0">
+                {$shop.activity|count}个活动
+            </div>-->
+        </div>
+        {/if}
+</div> 
+
+<div>
+    <div class="shop-tab-container_3skq8_0">
+        <div class="shop-tab-tab_r4SDi_0 shop-tab-active_ZY0C0_0">
+            <span class="shop-tab-title_1crD1_0">
+                商品
+            </span>
+        </div>
+        <div class="shop-tab-tab_r4SDi_0">
+            <span class="shop-tab-title_1crD1_0">
+                评价
+            </span>
+        </div>
+    </div> 
+</div>
+
+<div class="menuview-2hUkG" style="height: 1100px;">
+    <div class="menuview-2iJo3" style="display: none;">
+        <img src="//github.elemecdn.com/eleme/fe-static/1cb05f59/media/empty/no-food.png" /> 
+        <p>没有商品</p> 
+        <p>该商家还未上传商品</p>
+    </div>
+
+    <div class="menuview-17K3g">
+    <main class="menuview-i6fQ3">
+
+        <!--left-->
+        {if !empty($category)}
+        <ul class="menucategory-29kyE menuview-2_lFf" id="categoryList">
+            <!--<li class="menucategory-JnDmc menucategory-2MBNs menucategory-3e27M">
+                <img src="//fuss10.elemecdn.com/5/da/3872d782f707b4c82ce4607c73d1ajpeg.jpeg" class="menucategory-375ij" /> <span class="menucategory-qwsbd">热销榜</span>
+            </li>-->
+            {foreach from=$category item=f}
+            <li class="menucategory-3e27M" tag='li'>
+                <span class="menucategory-qwsbd">{$f.name}</span>
+            </li>
+            {/foreach}
+        </ul>
+        {/if}
+
+        <!--right-->
+        <section data-v-81584c58="" class="container menuview-JqDMu" id="productList">
+            <div data-v-81584c58="" class="scroller">
+                <dl data-v-81584c58="" class="">
+                    <dt data-v-81584c58="">
+                        <div data-v-81584c58="" class="category-title">
+                            <strong data-v-81584c58="" class="category-name" id="category-name"></strong> 
+                            <span data-v-81584c58="" class="category-description" id="category-description"></span>
+                        </div> 
+                    </dt> 
+                    <dd data-v-81584c58="" class="">
+                        <span data-v-81584c58="" class="foodimg">
+                            <img data-v-81584c58="" src="//fuss10.elemecdn.com/e/cd/11feb9696cec2a4d28feb6525545epng.png?imageMogr/thumbnail/140x140/format/webp/quality/85" />
+                        </span> 
+                        <section data-v-81584c58="" class="foodinfo">
+                            <header data-v-81584c58="" class="foodtitle">
+                                <span data-v-81584c58="">吉味双拼饭</span> 
+                            </header> 
+                            <p data-v-81584c58="" class="fooddescription">鸡肉+牛肉+洋葱+蔬菜（西兰花、胡萝卜、菜花）</p> 
+                            <p data-v-81584c58="" class="foodsales">
+                                <span data-v-81584c58="">月售403份</span> 
+                                <span data-v-81584c58="">好评率90%</span>
+                            </p> 
+                            <strong data-v-81584c58="" class="foodprice">
+                                <span data-v-81584c58="">32.5</span> 
+                            </strong> 
+                            <div data-v-81584c58="" class="cartbutton">
+                                <span data-v-81584c58="">
+                                    <span class="cartbutton-2tycR">
+                                        <a href="javascript:">
+                                            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use></svg>
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        </section>
+                    </dd>
+                </dl>
+            </div>
+        </section>
+    </main>
+    
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/js/shop.js"></script>
+</div>
+</body>
+</html>
