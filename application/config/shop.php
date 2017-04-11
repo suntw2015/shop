@@ -2,7 +2,7 @@
 
 $config['shop'] = array(
     'name'          => '郑志恒的杂货铺',
-    'cover_img'     => '//fuss10.elemecdn.com/9/da/99e61b6978553324d485a70c67ebapng.png?imageMogr/format/webp/',
+    'cover_img'     => '/assets/image/example_product.png',
     'delivery'      => array('delivery1','delivery2'),
     'notice'        => '测试公告',
     'activity'      => array(
