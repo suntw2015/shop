@@ -97,7 +97,7 @@
                 <img src="//fuss10.elemecdn.com/5/da/3872d782f707b4c82ce4607c73d1ajpeg.jpeg" class="menucategory-375ij" /> <span class="menucategory-qwsbd">热销榜</span>
             </li>-->
             {foreach from=$category item=f}
-            <li class="menucategory-3e27M" tag='li'>
+            <li class="menucategory-3e27M" tag='li' data-id="{$f.id}">
                 <span class="menucategory-qwsbd">{$f.name}</span>
             </li>
             {/foreach}
@@ -107,45 +107,60 @@
         <!--right-->
         <section data-v-81584c58="" class="container menuview-JqDMu" id="productList">
             <div data-v-81584c58="" class="scroller">
+                {foreach from = $categoryProduct item=category}
                 <dl data-v-81584c58="" class="">
                     <dt data-v-81584c58="">
                         <div data-v-81584c58="" class="category-title">
-                            <strong data-v-81584c58="" class="category-name" id="category-name"></strong> 
-                            <span data-v-81584c58="" class="category-description" id="category-description"></span>
+                            <strong data-v-81584c58="" class="category-name">{$category['categoryName']}</strong> 
+                            <span data-v-81584c58="" class="category-description">{$category['categoryDesc']}</span>
                         </div> 
-                    </dt> 
-                    <dd data-v-81584c58="" class="">
+                    </dt>
+                    {foreach from=$category['productList'] item=product}
+                    <dd data-v-81584c58="" class="productDetail">
                         <span data-v-81584c58="" class="foodimg">
-                            <img data-v-81584c58="" src="//fuss10.elemecdn.com/e/cd/11feb9696cec2a4d28feb6525545epng.png?imageMogr/thumbnail/140x140/format/webp/quality/85" />
+                            <img data-v-81584c58="" src="{$product['cover_img']}" />
                         </span> 
                         <section data-v-81584c58="" class="foodinfo">
                             <header data-v-81584c58="" class="foodtitle">
-                                <span data-v-81584c58="">吉味双拼饭</span> 
+                                <span data-v-81584c58="">{$product['name']}</span> 
                             </header> 
-                            <p data-v-81584c58="" class="fooddescription">鸡肉+牛肉+洋葱+蔬菜（西兰花、胡萝卜、菜花）</p> 
+                            <p data-v-81584c58="" class="fooddescription">{$product['desc']}</p> 
                             <p data-v-81584c58="" class="foodsales">
-                                <span data-v-81584c58="">月售403份</span> 
-                                <span data-v-81584c58="">好评率90%</span>
+                                <!--<span data-v-81584c58="">月售403份</span> 
+                                <span data-v-81584c58="">好评率90%</span>-->
                             </p> 
                             <strong data-v-81584c58="" class="foodprice">
-                                <span data-v-81584c58="">32.5</span> 
-                            </strong> 
+                                <span data-v-81584c58="">{$product['price']}</span> 
+                            </strong>
+
+                            {if $product['stock'] gt 0}
                             <div data-v-81584c58="" class="cartbutton">
                                 <span data-v-81584c58="">
                                     <span class="cartbutton-2tycR">
-                                        <a href="javascript:">
+                                        <a href="javascript:" class="minus" tag="minus" style="display: none">
+                                            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use></svg>
+                                        </a> 
+                                        <span class="cartbutton-2OSi7 count" style="display: none">0</span>
+                                        <a href="javascript:" class="plus" tag="plus">
                                             <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use></svg>
                                         </a>
                                     </span>
                                 </span>
                             </div>
+                            {/if}
                         </section>
                     </dd>
+                    {/foreach}
                 </dl>
+                {/foreach}
             </div>
         </section>
     </main>
-    
+
+    <script type="text/javascript">
+        
+    </script>
+
     <script src="/assets/js/jquery-2.0.3.min.js"></script>
     <script src="/assets/js/shop.js"></script>
 </div>

@@ -16,19 +16,38 @@ class Shop extends APP_Controller{
         $product = $this->Product_model->getNormalList();
         $categoryMap = $this->Category_product_model->getNormalList();
 
-        $newCategoryMap = array();
+        $newProduct = array();
+        foreach($product as $key=>$value){
+            $newProduct[$value['id']] = $value;
+        }
+
+        $newCategory = array();
+        foreach($category as $key=>$value){
+            $newCategory[$value['id']] = $value;
+        }
+
+        $categoryProduct = array();
         foreach($categoryMap as $key=>$value){
             $category_id = $value['category_id'];
             $product_id = $value['product_id'];
 
-            $newCategoryMap[$category_id][] = $product_id;
+            if(!isset($categoryProduct[$category_id])){
+                $categoryProduct[$category_id] = array(
+                    'categoryName'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['name'] : '',
+                    'categoryDesc'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['desc'] : '',
+                    'productList'   => array()    
+                );
+            }
+
+            if(isset($newProduct[$product_id])){
+                $categoryProduct[$category_id]['productList'][] = $newProduct[$product_id];
+            }
         }
 
         $this->render('shop/index.html',array(
             'shop'  => $shopInfo,
             'category'  => $category,
-            'product'   => $product,
-            'categoryMap'   => $newCategoryMap
+            'categoryProduct'   => $categoryProduct,
         ));
     }
 }

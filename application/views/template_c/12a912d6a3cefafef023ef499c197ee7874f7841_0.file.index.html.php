@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31, created on 2017-04-10 17:27:57
+/* Smarty version 3.1.31, created on 2017-04-11 14:44:11
   from "/server/www/self/shop/application/views/shop/index.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31',
-  'unifunc' => 'content_58eb501d293675_70248746',
+  'unifunc' => 'content_58ec7b3b366d19_77184553',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '12a912d6a3cefafef023ef499c197ee7874f7841' => 
     array (
       0 => '/server/www/self/shop/application/views/shop/index.html',
-      1 => 1491816470,
+      1 => 1491892432,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58eb501d293675_70248746 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ec7b3b366d19_77184553 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!doctype html>
 <html lang="zh-cmn-Hans">
@@ -145,7 +145,8 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['f']->value) {
 ?>
-            <li class="menucategory-3e27M" tag='li'>
+            <li class="menucategory-3e27M" tag='li' data-id="<?php echo $_smarty_tpl->tpl_vars['f']->value['id'];?>
+">
                 <span class="menucategory-qwsbd"><?php echo $_smarty_tpl->tpl_vars['f']->value['name'];?>
 </span>
             </li>
@@ -161,45 +162,86 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
         <!--right-->
         <section data-v-81584c58="" class="container menuview-JqDMu" id="productList">
             <div data-v-81584c58="" class="scroller">
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categoryProduct']->value, 'category');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+?>
                 <dl data-v-81584c58="" class="">
                     <dt data-v-81584c58="">
                         <div data-v-81584c58="" class="category-title">
-                            <strong data-v-81584c58="" class="category-name" id="category-name"></strong> 
-                            <span data-v-81584c58="" class="category-description" id="category-description"></span>
+                            <strong data-v-81584c58="" class="category-name"><?php echo $_smarty_tpl->tpl_vars['category']->value['categoryName'];?>
+</strong> 
+                            <span data-v-81584c58="" class="category-description"><?php echo $_smarty_tpl->tpl_vars['category']->value['categoryDesc'];?>
+</span>
                         </div> 
-                    </dt> 
-                    <dd data-v-81584c58="" class="">
+                    </dt>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['category']->value['productList'], 'product');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['product']->value) {
+?>
+                    <dd data-v-81584c58="" class="productDetail">
                         <span data-v-81584c58="" class="foodimg">
-                            <img data-v-81584c58="" src="//fuss10.elemecdn.com/e/cd/11feb9696cec2a4d28feb6525545epng.png?imageMogr/thumbnail/140x140/format/webp/quality/85" />
+                            <img data-v-81584c58="" src="<?php echo $_smarty_tpl->tpl_vars['product']->value['cover_img'];?>
+" />
                         </span> 
                         <section data-v-81584c58="" class="foodinfo">
                             <header data-v-81584c58="" class="foodtitle">
-                                <span data-v-81584c58="">吉味双拼饭</span> 
+                                <span data-v-81584c58=""><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
+</span> 
                             </header> 
-                            <p data-v-81584c58="" class="fooddescription">鸡肉+牛肉+洋葱+蔬菜（西兰花、胡萝卜、菜花）</p> 
+                            <p data-v-81584c58="" class="fooddescription"><?php echo $_smarty_tpl->tpl_vars['product']->value['desc'];?>
+</p> 
                             <p data-v-81584c58="" class="foodsales">
-                                <span data-v-81584c58="">月售403份</span> 
-                                <span data-v-81584c58="">好评率90%</span>
+                                <!--<span data-v-81584c58="">月售403份</span> 
+                                <span data-v-81584c58="">好评率90%</span>-->
                             </p> 
                             <strong data-v-81584c58="" class="foodprice">
-                                <span data-v-81584c58="">32.5</span> 
-                            </strong> 
+                                <span data-v-81584c58=""><?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
+</span> 
+                            </strong>
+
+                            <?php if ($_smarty_tpl->tpl_vars['product']->value['stock'] > 0) {?>
                             <div data-v-81584c58="" class="cartbutton">
                                 <span data-v-81584c58="">
                                     <span class="cartbutton-2tycR">
-                                        <a href="javascript:">
+                                        <a href="javascript:" class="minus" tag="minus" style="display: none">
+                                            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use></svg>
+                                        </a> 
+                                        <span class="cartbutton-2OSi7 count" style="display: none">0</span>
+                                        <a href="javascript:" class="plus" tag="plus">
                                             <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-minus"></use></svg>
                                         </a>
                                     </span>
                                 </span>
                             </div>
+                            <?php }?>
                         </section>
                     </dd>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
+?>
+
                 </dl>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
+?>
+
             </div>
         </section>
     </main>
-    
+
+    <?php echo '<script'; ?>
+ type="text/javascript">
+        
+    <?php echo '</script'; ?>
+>
+
     <?php echo '<script'; ?>
  src="/assets/js/jquery-2.0.3.min.js"><?php echo '</script'; ?>
 >
