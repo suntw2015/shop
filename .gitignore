@@ -1,5 +1,6 @@
 .DS_Store
 *.DS_Store
 /manage/views/template_c/*
+/application/views/template_c/*
 /application/config/database.php
 application/config/database.php
