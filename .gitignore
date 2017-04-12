@@ -3,4 +3,4 @@
 /manage/views/template_c/*
 /application/views/template_c/*
 /application/config/database.php
-application/config/database.php
+/manage/config/database.php
