@@ -10,7 +10,9 @@ class APP_Controller extends CI_Controller{
 		
 		$this->load->library(array('smarty'));
 		$this->load->helper('cookie');
-
+        
+        $controller = $this->router->fetch_class();
+        $method = $this->router->fetch_method();
 		// if(!in_array($this->router->fetch_method(),array('login','do_login'))){
 		// 	$this->check_auth();
 		// }
