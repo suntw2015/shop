@@ -1,10 +1,6 @@
 <?php
 class User extends APP_Controller{
 
-	public function __construct(){
-		parent::__construct();
-	}
-
 	public function index(){
 		$this->render("user/index.html",array(
 			'isShowFooter'	=> true,
@@ -40,6 +36,6 @@ class User extends APP_Controller{
 		}
 
 		set_cookie('token',$userInfo['token'],3600*24*30);
-		$this->return_success("/user/index");
+		$this->return_success("/user");
 	}
 }
