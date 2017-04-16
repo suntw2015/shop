@@ -22,7 +22,7 @@ Class Order_model extends APP_Model{
     public function getOrderByOid($oid=0){
         $oid = (int)$oid;
         $this->db->where('id',$oid);
-        $query->$this->db->get($this->tableName);
+        $query = $this->db->get($this->tableName);
         $result = $query->row_array();
 
         return $result;

@@ -1,18 +1,47 @@
 <?php
 class APP_Controller extends CI_Controller{
-	
-	protected $needLogin=true;
 
 	protected $userInfo;
 
+	protected $isShowFooter;
+
+	protected $footerIndex;
+
+	protected $isShowBack;
+
+	protected $backUrl;
+
 	public function __construct(){
 		parent::__construct();
-		
+
 		$this->load->library(array('smarty'));
 		$this->load->helper('cookie');
         
         $controller = $this->router->fetch_class();
         $method = $this->router->fetch_method();
+
+		$needLogin = array(
+			'user'	=> array(
+				'index'
+			),
+			'order'	=> array(
+				'*'
+			)
+		);
+
+		if(isset($needLogin[$controller]) && (in_array('*',$needLogin[$controller]) || in_array($method,$needLogin[$controller]))){
+			$this->check_auth();
+		}
+
+		$this->isShowFooter = false;
+		$this->footerIndex = 1;
+		$this->isShowBack = false;
+		$this->backUrl = "#";
+
+		$this->assign("isShowFooter",$this->isShowFooter);
+		$this->assign("footerIndex",$this->footerIndex);
+		$this->assign("isShowBack",$this->isShowBack);
+
 		// if(!in_array($this->router->fetch_method(),array('login','do_login'))){
 		// 	$this->check_auth();
 		// }
@@ -26,12 +55,13 @@ class APP_Controller extends CI_Controller{
 		}
 
 		$this->load->model('User_model');
-		$userInfo = $this->User_model->check_token($token);
-		if(!isset($userInfo['code']) || $userInfo['code'] != 0){
+		$userInfo = $this->User_model->loginByToken($token);
+		if(!is_array($userInfo)){
 			$this->redirect('/user/login');
 		}
 
-		$this->userInfo = $userInfo['data'];
+		$this->userInfo = $userInfo;
+		$this->assign("userInfo",$this->userInfo);
 	}
 
 	public function format_menu(){
