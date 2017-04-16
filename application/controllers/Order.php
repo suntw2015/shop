@@ -56,4 +56,32 @@ class Order extends APP_Controller{
 	public function order(){
 		
 	}
+
+	public function detail(){
+		$data = $this->input->get();
+		if(!isset($data['oid']) && empty($data['oid'])){
+			echo "找不到该订单";exit;
+		}
+
+		$oid = $data['oid'];
+		$this->load->model(array("Order_model","Order_Item_model"));
+		$orderInfo = $this->Order_model->getOrderByOid($oid);
+		if(!is_array($orderInfo)){
+			echo "订单不存在";exit;
+		}
+
+		$orderItem = $this->Order_Item_model->getListByOid($oid);
+		$orderInfo['productList'] = $orderItem;
+
+		$this->config->load("shop");
+		$shopInfo = $this->config->item("shop");
+
+		$this->render("order/detail.html",array(
+			'orderInfo'	=> $orderInfo,
+			'shopInfo'	=> $shopInfo,
+			'isShowBack'	=> true,
+			'title'			=> '订单详情',
+			'backUrl'		=> '/order'
+		));
+	}
 }

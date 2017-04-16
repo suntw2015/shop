@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-cmn-Hans">
 <head>
-    <title>订单列表</title>
+    <title>订单详情</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -9,7 +9,7 @@
     <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
     <link href="/assets/css/vendor.css" rel="stylesheet">
     <link href="/assets/css/order.css" rel="stylesheet">
-    <!--<link href="/assets/css/main.css" rel="stylesheet">-->
+    <link href="/assets/css/main.css" rel="stylesheet">
 </head>
 <body style="font-size: 24px;">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
@@ -181,52 +181,95 @@
         </defs>
     </svg>
     <div>
-        <div data-v-08f9d9b7="">
+        <div data-v-c54e58ac="">
             {include file="common/header.html"}
-            <section class="nodatatipWrap NoDataTip-wrapper_1Gwf0tm" img="no-log" data-v-08f9d9b7="" style="display: none;">
+            <div data-v-c54e58ac="">
+                <div data-v-2fc20090="" class="restaurant-card" data-v-c54e58ac="">
+                    <div data-v-2fc20090="" class="head listitem">
+                        <div data-v-2fc20090="" class="name-wrap">
+                            <img data-v-2fc20090="" class="avatar" src="{$shopInfo['cover_img']}">
+                            <span data-v-2fc20090="" class="name">{$shopInfo['name']}</span></div>
+                        <img data-v-2fc20090="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAcCAMAAABf788oAAAAbFBMVEUAAAAzMzMzMzM2NjYzMzM1NTU0NDRAQEAzMzM0NDRAQEAzMzM0NDQzMzM0NDQ0NDQ0NDQzMzMzMzMzMzM0NDQ1NTU2NjY5OTk0NDQ0NDQzMzM0NDQzMzM0NDQ1NTU0NDQzMzM0NDQ3NzczMzMku2ijAAAAI3RSTlMA+/Yi4Do2CnhIBO/o176uopeGb2VALhsT8c/LtI2DXVVTM3zB6zwAAACGSURBVBjTfdBJEsIwDETRJHZMRkgIGZiHf/874mVbRaFdv42kzn6MCybnjAkE4JjIAFQKzQE4qez2wCuRK+S1ytZDUaqsHtpFxXXQOZWlBb+qlEWUTaXO4ZIs78Gb83R1c4PzRx8ypw0xz5JH88w95rfkB/CUXJmCJmDSP22lwZaezSH7N19vZgteSBxyaAAAAABJRU5ErkJggg==" class="icon-arrowright"></div>
+                    <div data-v-2fc20090="" class="product-list listitem">
+                        <ul data-v-2fc20090="" class="cart-item">
+                            {foreach from=$orderInfo['productList'] item=product}
+                            <li data-v-2fc20090="" class="product-item">
+                                <div data-v-2fc20090="" class="profile">
+                                    <p data-v-2fc20090="" class="name">{$product['item_name']}</p>
+                                </div>
+                                <div data-v-2fc20090="" class="price-wrap">
+                                    <span data-v-2fc20090="" class="quantity">x{$product['item_count']}</span>
+                                    <span data-v-2fc20090="">¥{$product['item_price']}</span>
+                                </div>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                    <!--<ul data-v-2fc20090="" class="listitem">
+                        <li data-v-2fc20090="" class="product-item">
+                            <span data-v-2fc20090="" class="name">配送费</span>
+                            <span data-v-2fc20090="">¥5</span></li>
+                    </ul>
+                    <div data-v-2fc20090="" class="price listitem">
+                        <p data-v-2fc20090="" class="row">
+                            <span data-v-2fc20090="">在线支付立减优惠</span>
+                            <span data-v-2fc20090="">- ¥10</span>
+                        </p>
+                        <p data-v-2fc20090="" class="row">
+                            <span data-v-2fc20090="">会员减配送费</span>
+                            <span data-v-2fc20090="">- ¥4</span>
+                        </p>
+                    </div>
+                    <div data-v-2fc20090="" class="finalprice listitem">实付 ¥16.3</div></div>-->
+                <div data-v-e08ad408="" class="detailcard" data-v-c54e58ac="">
+                    <!--<div data-v-e08ad408="" class="detailcard-delivery card">
+                        <div data-v-e08ad408="" class="title">配送信息</div>
+                        <ul data-v-e08ad408="" class="cardlist">
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">送达时间：</span>尽快送达〡预计21:00</li>
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">送货地址：</span>
+                                <div data-v-e08ad408="" class="content">
+                                    <p data-v-e08ad408="">孙天文</p>
+                                    <p data-v-e08ad408="">15011013067</p>
+                                    <p data-v-e08ad408="">龙锦苑一区8号楼5单元502</p></div>
+                            </li>
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">配送方式：</span>蜂鸟专送</li>
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">配送骑手：</span>于海龙，
+                                <a data-v-e08ad408="" href="tel13734704940" class="tel">13734704940</a></li>
+                        </ul>
+                    </div>-->
+                    <div data-v-e08ad408="" class="detailcard-order card">
+                        <div data-v-e08ad408="" class="title">订单信息</div>
+                        <ul data-v-e08ad408="" class="cardlist">
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">订单号：</span>{$orderInfo['id']}
+                            </li>
+                            <!--<li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">支付方式：</span>在线支付
+                            </li>-->
+                            <li data-v-e08ad408="" class="listitem">
+                                <span data-v-e08ad408="">下单时间：</span>2017-04-14 20:29
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <section class="NoDataTip-wrapper_1Gwf0tm" title="" data-v-c54e58ac="" style="display: none;">
                 <img src="//github.elemecdn.com/eleme/fe-static/master/media/empty/error-load.png">
                 <h3>没有结果</h3>
             </section>
-            <div data-v-08f9d9b7="" infinite-scroll-distance="20" class="orderbody">
-                {foreach from=$orderList item=order}
-                <a data-v-e8380afc="" href="/order/detail?oid={$order['id']}" class="ordercard" data-v-08f9d9b7="">
-                    <div data-v-e8380afc="" class="ordercard-body">
-                        <div data-v-e8380afc="" class="ordercard-avatar">
-                            <img data-v-e8380afc="" src="{$shopInfo['cover_img']}"></div>
-                        <div data-v-e8380afc="" class="ordercard-content">
-                            <div data-v-e8380afc="" class="ordercard-head">
-                                <div data-v-e8380afc="" class="title">
-                                    <p data-v-e8380afc="" class="name">
-                                        <span data-v-e8380afc="" class="content">{$shopInfo['name']}</span>
-                                        <svg data-v-e8380afc="">
-                                            <use data-v-e8380afc="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-                                        </svg>
-                                    </p>
-                                    <!--<p data-v-e8380afc="" class="status">订单已取消</p>-->
-                                </div>
-                                <p data-v-e8380afc="" class="datetime">{$order['create_time']}</p>
-                            </div>
-                            <div data-v-e8380afc="" class="ordercard-detail">
-                                <p data-v-e8380afc="" class="detail">
-                                    <!--<span data-v-e8380afc="" class="productname ellipsis">小米粥</span>-->
-                                    <span data-v-e8380afc="">共{$order['item_count']}件商品</span></p>
-                                <p data-v-e8380afc="" class="price">¥{$order['price']}</p></div>
-                        </div>
-                    </div>
-                    <!--<div data-v-e8380afc="" class="ordercard-bottom">
-                        <button data-v-e8380afc="" class="cardbutton">再来一单</button>
-                    </div>-->
-                </a>
-                {/foreach}
-                <div data-v-08f9d9b7="" class="orderbody-bottom">
-                    <p data-v-08f9d9b7="" class="loading" style="display: none;">
-                        <svg data-v-08f9d9b7="" class="loading-svg">
-                            <use data-v-08f9d9b7="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#loading"></use>
-                        </svg>
-                    </p>
-                </div>
+            <div class="mint-actionsheet" data-v-c54e58ac="" style="display: none;">
+                <ul class="mint-actionsheet-list" style="margin-bottom: 5px;"></ul>
+                <a class="mint-actionsheet-button">取消</a></div>
+        </div>
+        <div class="Load-wrapper_3h35P-W Load-fixed_1L8WA4k" style="display: none;">
+            <div class="Load-loading-main_1LVs9py">
+                <div class="Load-loading-icon_2LvpNhI"></div>
+                <div class="Load-loading-bottom_1G6-yJs"></div>
             </div>
-            {include file="common/footer.html"}
         </div>
     </div>
 </body>
