@@ -175,9 +175,8 @@ var shopPage = {
                 break; 
         }
 
-        var count = this.shopCarList[pid]['count'] == 0 ? '' : this.shopCarList[pid]['count'];
         var categoryIndex = this.productCategoryIndex[pid];
-        this.context.categoryList.find("li[data-id="+categoryIndex+"]").find("span[tag=count]").text(count);
+        this.adjustCategoryNum(type,categoryIndex);
 
         var totalPrice = 0;
         for(i in this.shopCarList){
@@ -191,6 +190,29 @@ var shopPage = {
         }
 
         this.context.totalPrice.text(totalPrice);
+    },
+    adjustCategoryNum:function(type,id){
+
+        var count = this.context.categoryList.find("li[data-id="+id+"]").find("span[tag=count]").text();
+        if(count == '' || count == undefined){
+            count = 0;
+        }else{
+            count = parseInt(count);
+        }
+        switch(type){
+            case 'minus':
+                if(count > 1){
+                    this.context.categoryList.find("li[data-id="+id+"]").find("span[tag=count]").text(count-1);
+                }else if(count == 1){
+                    this.context.categoryList.find("li[data-id="+id+"]").find("span[tag=count]").text('');
+                }
+                break;
+            case 'plus':
+                this.context.categoryList.find("li[data-id="+id+"]").find("span[tag=count]").text(count+1);
+                break;
+            default:
+                break;
+        }
     },
     adjustShopCarList:function(){
         var tpl = '';
