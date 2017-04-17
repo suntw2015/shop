@@ -81,7 +81,7 @@ class APP_Controller extends CI_Controller{
 				$this->assign($k,$v);
 			}
 		}
-		$this->smarty->display($template);
+		$this->smarty->display($template);exit;
 	}
 
 	public function ajax_return($data){
@@ -89,14 +89,14 @@ class APP_Controller extends CI_Controller{
 		exit;
 	}
 
-	public function return_success($data){
+	public function return_success($data=array()){
 		$this->ajax_return(array(
 			'code'	=> 0,
 			'data'	=> $data
 		));
 	}
 
-	public function return_fail($msg){
+	public function return_fail($msg=""){
 		$this->ajax_return(array(
 			'code'	=> -1,
 			'msg'	=> $msg
@@ -107,5 +107,14 @@ class APP_Controller extends CI_Controller{
 		Header("HTTP/1.1 301 Permanently Moved");
 		Header("Location: $url");
 		exit;
+	}
+
+	public function show_error_page($msg='有一个错误发生了'){
+		$this->render("common/error.html",array(
+			'title'			=> '错误',
+			'isShowBack'	=> true,
+			'msg'			=> $msg,
+			'backUrl'		=> isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : empty($this->userInfo) ? '/shop' : '/order',
+		));
 	}
 }

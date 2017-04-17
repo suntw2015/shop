@@ -44,10 +44,20 @@ class Shop extends APP_Controller{
             }
         }
 
+        //产品倒排分类索引
+        $productCategoryIndex = array();
+        foreach($categoryMap as $key=>$value){
+            $category_id = $value['category_id'];
+            $product_id = $value['product_id'];
+            $productCategoryIndex[$product_id] = $category_id;
+        }
+
         $this->render('shop/index.html',array(
             'shop'  => $shopInfo,
             'category'  => $category,
             'categoryProduct'   => $categoryProduct,
+            'product'   => json_encode($product),
+            'productCategoryIndex'  => json_encode($productCategoryIndex)
         ));
     }
 }

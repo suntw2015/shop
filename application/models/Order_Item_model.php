@@ -17,4 +17,22 @@ class Order_Item_model extends APP_Model{
 
         return $result;
     }
+
+    public function create($data){
+        if(empty($data) || !is_array($data)){
+            return false;
+        }
+
+        $this->db->insert_batch('order_item',$data);
+        $row = $this->db->affected_rows();
+
+        return $row;
+    }
+
+    public function removeOrderByOid($oid){
+        $this->db->where("oid",$oid);
+        $this->db->from('order_item');
+        
+        return $this->db->delete();
+    }
 }
