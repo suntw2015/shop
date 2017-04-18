@@ -26,11 +26,11 @@ class APP_Controller extends CI_Controller{
 
 		$this->load->model('User_model');
 		$userInfo = $this->User_model->check_token($token);
-		if(!isset($userInfo['code']) || $userInfo['code'] != 0){
+		if(!is_array($userInfo) || empty($userInfo)){
 			$this->redirect('/user/login');
 		}
 
-		$this->userInfo = $userInfo['data'];
+		$this->userInfo = $userInfo;
 	}
 
 	public function format_menu(){

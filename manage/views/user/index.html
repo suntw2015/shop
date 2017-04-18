@@ -1,0 +1,33 @@
+{extends file='common/index.html'}
+{block name='content'}
+
+<div class="row">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>手机</th>
+            <th>角色</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            {foreach from=$userList item=user}
+            <tr>
+                <td>{$user.id}</td>
+                <td>{$user.username}</td>
+                <td>{$user.phone}</td>
+                <td>{$user.role_text}</td>
+                <td>{$user.status_text}</td>
+                <td>{$user.create_time}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm">修改</button>
+                    <button type="button" class="btn btn-info btn-sm">禁用</button>
+                </td>
+            </tr>
+            {/foreach}
+        </tbody>
+    </table>
+</div>
+{/block}

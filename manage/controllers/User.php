@@ -1,13 +1,32 @@
 <?php
 class User extends APP_Controller{
 
+	protected $roleList = array(
+		1 => '普通用户',
+		2 => '管理员'
+	);
+
+	protected $statusList = array(
+		1 => '正常',
+		2 => '禁用'
+	);
+
 	public function __construct(){
-		parent::__construct();
+		parent::__construct();		
+		$this->load->model('User_model');
 	}
 
 	 public function index(){
-		 $this->render("user/index.tpl",array(
-			 'title'	=> 'manage'
+
+		 $userList = $this->User_model->getAll();
+		 foreach($userList as $key=>$value){
+			 $userList[$key]['role_text'] = isset($this->roleList[$value['role']]) ? $this->roleList[$value['role']] : '';
+			 $userList[$key]['status_text'] = isset($this->statusList[$value['status']]) ? $this->statusList[$value['status']] : '';
+		 }
+
+		 $this->render("user/index.html",array(
+			 'title'	=> '用户管理',
+			 'userList'	=> $userList
 		 ));
 	 }
 
@@ -24,7 +43,6 @@ class User extends APP_Controller{
 			$this->return_fail('用户名密码不能为空');
 		}
 
-		$this->load->model('User_model');
 		$userInfo = $this->User_model->check_normal($params['username'],$params['password']);
 
 		if($userInfo['code'] != 0){

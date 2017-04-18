@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'shop_test',
-	'password' => 'shop123456',
+	'hostname' => '123.207.154.173',
+	'username' => 'txdb',
+	'password' => 'Txdb123#@!',
 	'database' => 'shop',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

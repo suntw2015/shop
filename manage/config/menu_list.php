@@ -2,39 +2,27 @@
 
 $config['menu_list'] = array(
     array(
-        'title' => '商铺',
+        'title' => '用户管理',
         'icon'  => '',
-        'href'  => '#',
-        'class' => '',
-        'submenu'   => array(
-            array(
-                'title' => '商铺管理',
-                'href'  => '#'
-            )
-        )
+        'href'  => '/user',
+        'class' => ''
     ),
     array(
-        'title' => 'menu2',
+        'title' => '商铺信息',
         'icon'  => '',
-        'href'  => '#',
-        'class' => '',
-        'submenu'   => array(
-            array(
-                'title' => 'sub21',
-                'href'  => '#'
-            )
-        )
+        'href'  => '/shop',
+        'class' => ''
     ),
     array(
-        'title' => 'menu3',
+        'title' => '分类管理',
         'icon'  => '',
-        'href'  => '#',
-        'class' => '',
-        'submenu'   => array(
-            array(
-                'title' => 'sub31',
-                'href'  => '#'
-            )
-        )
+        'href'  => '/category',
+        'class' => ''
+    ),
+    array(
+        'title' => '商品管理',
+        'icon'  => '',
+        'href'  => '/product',
+        'class' => ''
     ),
 );

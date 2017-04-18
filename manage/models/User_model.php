@@ -16,11 +16,15 @@ class User_Model extends APP_Model{
         $result = $query->row_array();
 
         if(empty($result)){
-            return $this->return_error('用户名密码错误');
+            return '用户名密码错误';
         }
 
         if($result['status'] == 0){
-            return $this->return_error($result['error_reason']);
+            return $result['error_reason'];
+        }
+
+        if($result['role'] != 2){
+            return '非管理员账号，无法登陆';
         }
 
         if(empty($result['token'])){
@@ -30,26 +34,26 @@ class User_Model extends APP_Model{
             $result['token'] = $token;
         }
 
-        return $this->return_success($result);
+        return $result;
     }
 
     public function check_token($token){
         if(empty($token)){
-            $this->return_error();
+            return false;
         }
 
         $query = $this->db->get_where('user',array('token'=>$token));
         $result = $query->row_array();
 
         if(empty($result)){
-            $this->return_error();
+            return '用户不存在';
         }
 
         if($result['status'] == 0){
-            $this->return_error($result['error_reason']);
+            return $result['error_reason'];
         }
 
-        return $this->return_success($result);
+        return $result;
     }
 
     public function create($data){
@@ -67,6 +71,13 @@ class User_Model extends APP_Model{
 
     public  function update($data){
         
+    }
+
+    public function getAll(){
+        $query = $this->db->get('user');
+        $result = $query->result_array();
+
+        return $result;
     }
 
     private function create_password($password){
