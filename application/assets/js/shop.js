@@ -51,6 +51,7 @@ var shopPage = {
         this.context.totalPrice     = $("#totalPrice");
         this.context.submit         = $("#submit");
         this.context.emptyShopCar   = $("#emptyShopCar");
+        this.context.productScroll  = $("#productList").find(".scroller");
     },
 
     EventEle: function (e) {
@@ -64,9 +65,12 @@ var shopPage = {
         this.context.productItem.bind("click",this.productItemClick.toEventHandler(this));
         this.context.emptyShopCar.bind("click",this.emptyShopCar.toEventHandler(this));
         this.context.submit.bind("click",this.submitClick.toEventHandler(this));
+        // this.context.productScroll.bind("scroll",this.adjustScroll.toEventHandler(this));
     },
 
     categoryClick:function(e){
+        this.scrollEnable = false;
+
         this.context.categoryList.find(".menucategory-JnDmc").removeClass("menucategory-JnDmc");
         var ele = this.EventEle(e);
         var tag = ele.attr('tag');
@@ -77,6 +81,28 @@ var shopPage = {
         }else{
             ele.addClass("menucategory-JnDmc");
             categoryId = ele.data("id");
+        }
+
+        var top = parseFloat($("#productList").find("dl[data-category="+categoryId+"]").position().top);
+        var current = parseFloat($("#productList").find(".scroller").scrollTop());
+        $("#productList").find(".scroller").scrollTop(current + top);
+    },
+
+    adjustScroll:function(){
+        var categoryIndex = -1; 
+        $("#productList").find("dl").each(function(){
+            var category = parseInt($(this).data("category"));
+            var top = $(this).position().top;
+            if(category != NaN && category >= 0){
+                if(top <= 20){
+                    categoryIndex = category;
+                }
+            }
+        });
+
+        if(categoryIndex != -1){
+            this.context.categoryList.find(".menucategory-JnDmc").removeClass("menucategory-JnDmc");
+            this.context.categoryList.find("li[data-id="+categoryIndex+"]").addClass("menucategory-JnDmc");
         }
     },
 

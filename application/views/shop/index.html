@@ -74,11 +74,11 @@
                 商品
             </span>
         </div>
-        <div class="shop-tab-tab_r4SDi_0">
+        <!--<div class="shop-tab-tab_r4SDi_0">
             <span class="shop-tab-title_1crD1_0">
                 评价
             </span>
-        </div>
+        </div>-->
     </div> 
 </div>
 
@@ -98,8 +98,8 @@
             <!--<li class="menucategory-JnDmc menucategory-2MBNs menucategory-3e27M">
                 <img src="//fuss10.elemecdn.com/5/da/3872d782f707b4c82ce4607c73d1ajpeg.jpeg" class="menucategory-375ij" /> <span class="menucategory-qwsbd">热销榜</span>
             </li>-->
-            {foreach from=$category item=f}
-            <li class="menucategory-3e27M" tag='li' data-id="{$f.id}">
+            {foreach from=$category item=f name=category}
+            <li class="menucategory-3e27M {if $smarty.foreach.category.first}menucategory-JnDmc{/if}" tag='li' data-id="{$f.id}">
                 
                 <span class="menucategory-28BIn" tag="count"></span>
                 <span class="menucategory-qwsbd">{$f.name}</span>
@@ -112,7 +112,7 @@
         <section data-v-81584c58="" class="container menuview-JqDMu" id="productList">
             <div data-v-81584c58="" class="scroller">
                 {foreach from = $categoryProduct item=category}
-                <dl data-v-81584c58="" class="">
+                <dl data-v-81584c58="" class="" data-category="{$category['categoryId']}">
                     <dt data-v-81584c58="">
                         <div data-v-81584c58="" class="category-title">
                             <strong data-v-81584c58="" class="category-name">{$category['categoryName']}</strong> 

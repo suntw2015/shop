@@ -33,6 +33,7 @@ class Shop extends APP_Controller{
 
             if(!isset($categoryProduct[$category_id])){
                 $categoryProduct[$category_id] = array(
+                    'categoryId'    => $category_id,
                     'categoryName'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['name'] : '',
                     'categoryDesc'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['desc'] : '',
                     'productList'   => array()    
