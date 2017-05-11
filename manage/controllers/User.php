@@ -51,6 +51,6 @@ class User extends APP_Controller{
 
 		set_cookie('token',$userInfo['token'],3600*24*30);
 
-		$this->return_success(sprintf("%s/product/index",$_SERVER['HTTP_ORIGIN']));
+		$this->return_succes("/product/index");
 	 }
 }
