@@ -295,6 +295,8 @@ var shopPage = {
         $.post("/order/order",this.shopCarList,function(res){
             if(res.code == 0){
                 location.href = res.data;
+            }else if(res.code == -100){
+                location.href = '/user/login'
             }else{
                 alert(res.msg);
             }

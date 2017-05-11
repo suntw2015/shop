@@ -51,17 +51,28 @@ class APP_Controller extends CI_Controller{
 		$token = get_cookie('token');
 
 		if(empty($token)){
-			$this->redirect('/user/login');exit;
+			$this->jump_login();
 		}
 
 		$this->load->model('User_model');
 		$userInfo = $this->User_model->loginByToken($token);
 		if(!is_array($userInfo)){
-			$this->redirect('/user/login');
+			$this->jump_login();
 		}
 
 		$this->userInfo = $userInfo;
 		$this->assign("userInfo",$this->userInfo);
+	}
+
+	private function jump_login(){
+		if($this->input->is_ajax_request()){
+			$this->ajax_return(array(
+				'code' => '-100',
+				'msg'  => '登录'
+			));
+		}
+
+		$this->redirect('/user/login');
 	}
 
 	public function format_menu(){

@@ -45,8 +45,8 @@ class User extends APP_Controller{
 
 		$userInfo = $this->User_model->check_normal($params['username'],$params['password']);
 
-		if($userInfo['code'] != 0){
-			$this->return_fail($userInfo['msg']);
+		if(!is_array($userInfo)){
+			$this->return_fail('用户名密码不能为空');
 		}
 
 		$userInfo = $userInfo['data'];
