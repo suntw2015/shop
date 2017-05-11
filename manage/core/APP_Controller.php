@@ -21,13 +21,13 @@ class APP_Controller extends CI_Controller{
 		$token = get_cookie('token');
 
 		if(empty($token)){
-			$this->redirect('/user/login');exit;
+			$this->jump_login();
 		}
 
 		$this->load->model('User_model');
 		$userInfo = $this->User_model->check_token($token);
 		if(!is_array($userInfo) || empty($userInfo)){
-			$this->redirect('/user/login');
+			$this->jump_login();
 		}
 
 		$this->userInfo = $userInfo;
@@ -51,6 +51,17 @@ class APP_Controller extends CI_Controller{
 			}
 		}
 		$this->smarty->display($template);
+	}
+
+	private function jump_login(){
+		if($this->input->is_ajax_request()){
+			$this->ajax_return(array(
+				'code' => '-100',
+				'msg'  => '登录'
+			));
+		}
+
+		$this->redirect('/user/login');
 	}
 
 	public function ajax_return($data){
