@@ -32,7 +32,7 @@ class User extends APP_Controller{
 
 	 public function login(){
 		
-		$this->render("user/login.tpl",array(
+		$this->render("user/login.html",array(
 			'title'	=> '管理后台登录'
 		));
 	 }
