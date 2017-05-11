@@ -39,14 +39,14 @@ class User extends APP_Controller{
 
 	 public function do_login(){
 		$params = $this->input->post();
-		if(empty($params['username']) || empty($params['password'] || !$params['username'].length || !$params['password'].length)){
+		if(empty($params['username']) || empty($params['password'])){
 			$this->return_fail('用户名密码不能为空');
 		}
 
 		$userInfo = $this->User_model->check_normal($params['username'],$params['password']);
 
 		if(!is_array($userInfo)){
-			$this->return_fail('用户名密码不能为空');
+			$this->return_fail('用户名密码错误');
 		}
 
 		set_cookie('token',$userInfo['token'],3600*24*30);
