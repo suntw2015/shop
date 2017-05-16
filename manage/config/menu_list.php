@@ -4,25 +4,25 @@ $config['menu_list'] = array(
     array(
         'title' => '用户管理',
         'icon'  => '',
-        'href'  => '/user',
+        'href'  => '/user/index',
         'class' => ''
     ),
     array(
         'title' => '商铺信息',
         'icon'  => '',
-        'href'  => '/shop',
+        'href'  => '/shop/index',
         'class' => ''
     ),
     array(
         'title' => '分类管理',
         'icon'  => '',
-        'href'  => '/category',
+        'href'  => '/category/index',
         'class' => ''
     ),
     array(
         'title' => '商品管理',
         'icon'  => '',
-        'href'  => '/product',
+        'href'  => '/product/index',
         'class' => ''
     ),
 );

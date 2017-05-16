@@ -33,11 +33,9 @@
                     
                     {if !empty($shop.delivery)}
                     <p class="shop-header-delivery_1mcTe_0">
-                        {foreach from=$shop.delivery item=delivery}
                         <span class="shop-header-deliveryItem_Fari3_0">
-                            {$delivery}
+                            {$shop.delivery}
                         </span> 
-                        {/foreach}
                     </p>
                     {/if} 
                 {if !empty($shop.notice)}                    

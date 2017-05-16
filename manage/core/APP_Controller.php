@@ -26,7 +26,7 @@ class APP_Controller extends CI_Controller{
 
 		$this->load->model('User_model');
 		$userInfo = $this->User_model->check_token($token);
-		if(!is_array($userInfo) || empty($userInfo)){
+		if(empty($userInfo) || !is_array($userInfo) || $userInfo['role'] != 2 || $userInfo['status'] != 1){
 			$this->jump_login();
 		}
 
@@ -87,5 +87,13 @@ class APP_Controller extends CI_Controller{
 		Header("HTTP/1.1 301 Permanently Moved");
 		Header("Location: $url");
 		exit;
+	}
+
+	protected function setDefaultValues(&$data,$defaultValues){
+		foreach($defaultValues as $key=>$value){
+			if(!isset($data[$key])){
+				$data[$key] = $value;
+			}
+		}
 	}
 }

@@ -10,7 +10,7 @@ class Order extends APP_Controller{
 	public function __construct(){
 		parent::__construct();
 
-		$this->load->model(array("Order_model","Order_Item_model"));
+		$this->load->model(array("Order_model","Order_Item_model","Shop_model"));
 	}
 
 	public function index(){
@@ -19,8 +19,7 @@ class Order extends APP_Controller{
 
 		$orderList = $this->Order_model->getOrderByUid($this->userInfo['id']);
 
-		$this->config->load("shop");
-		$shopInfo = $this->config->item("shop");
+		$shopInfo = $this->Shop_model->get();
 
 		foreach($orderList as $key=>$value){
 			$orderList[$key]['status_text'] = isset($this->orderStatus[$value['status']]) ? $this->orderStatus[$value['status']] : '';
@@ -60,8 +59,7 @@ class Order extends APP_Controller{
 		$orderItem = $this->Order_Item_model->getListByOid($oid);
 		$orderInfo['productList'] = $orderItem;
 
-		$this->config->load("shop");
-		$shopInfo = $this->config->item("shop");
+		$shopInfo = $this->Shop_model->get();
 
 		$this->render("order/preorder.html",array(
 			'orderInfo'	=> $orderInfo,
@@ -210,8 +208,7 @@ class Order extends APP_Controller{
 		$orderInfo['productList'] = $orderItem;
 		$orderInfo['status_text'] = isset($this->orderStatus[$orderInfo['status']]) ? $this->orderStatus[$orderInfo['status']] : '';
 
-		$this->config->load("shop");
-		$shopInfo = $this->config->item("shop");
+		$shopInfo = $this->Shop_model->get();
 
 		$this->render("order/detail.html",array(
 			'orderInfo'	=> $orderInfo,

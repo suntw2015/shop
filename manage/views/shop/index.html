@@ -1,0 +1,68 @@
+{extends file='common/index.html'}
+{block name='content'}
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">店铺名称：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="name" value="{$shopInfo['name']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">店铺头像：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="cover_img" value="{$shopInfo['cover_img']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">配送信息：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="delivery" value="{$shopInfo['delivery']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">公告：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="notice" value="{$shopInfo['notice']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">活动标签：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="activity_icon" value="{$shopInfo['activity_icon']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">活动描述：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control"  id="activity_desc" value="{$shopInfo['activity_desc']}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">状态：</label>
+                <div class="col-xs-6" style="margin-top:3px">
+                    <label>
+                        <input name="status" type="radio" class="" value="0" {if $shopInfo['status'] eq 0}checked{/if}>
+                        <span class="lbl">关闭</span>
+                    </label>
+                    <label>
+                        <input name="status" type="radio" class="" value="1" {if $shopInfo['status'] eq 1}checked{/if}>
+                        <span class="lbl">开张</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-xs-10">
+                    <button class="btn btn-info" id="save" type="button">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+
+{block name="javascript"}
+    <script src="/assets/js/shop.js"></script>
+{/block}

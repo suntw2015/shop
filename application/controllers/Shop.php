@@ -5,12 +5,11 @@ class Shop extends APP_Controller{
     public function __construct(){
         parent::__construct();
 
-        $this->load->model(array('Category_model','Category_product_model','Product_model'));
+        $this->load->model(array('Category_model','Category_product_model','Product_model','Shop_model'));
     }
 
     public function index(){
-        $this->config->load('shop');
-        $shopInfo = $this->config->item('shop');
+        $shopInfo = $this->Shop_model->get();
 
         $category = $this->Category_model->getNormalList();
         $product = $this->Product_model->getNormalList();
