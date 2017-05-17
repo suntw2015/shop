@@ -1,0 +1,60 @@
+{extends file='common/index.html'}
+{block name='content'}
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">名称：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="name" placeholder="产品名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">描述：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="desc" placeholder="产品描述" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">缩略图：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="cover_img" placeholder="产品缩略图" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">价格：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="price" placeholder="售卖价格" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">库存：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="stock" placeholder="售卖库存" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">状态：</label>
+                <div class="col-xs-6" style="margin-top:3px">
+                    {foreach from=$statusList item=status key=key}
+                    <label>
+                        <input name="status" type="radio" class="" value="{$key}" {if $key eq 1}checked{/if}>
+                        <span class="lbl">{$status}</span>
+                    </label>
+                    {/foreach}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-2 col-xs-10">
+                    <button class="btn btn-info" id="save" type="button">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+
+{block name="javascript"}
+    <script src="/assets/js/product.js"></script>
+{/block}

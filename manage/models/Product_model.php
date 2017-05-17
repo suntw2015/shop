@@ -58,7 +58,7 @@ class Product_model extends APP_Model{
             return '状态不正确';
         }
 
-        $categoryInfo = $this->getCategoryByid($data['cid']);
+        $categoryInfo = $this->getProductByid($data['pid']);
         if(empty($categoryInfo)){
             return '分类信息不存在';
         }
@@ -83,5 +83,15 @@ class Product_model extends APP_Model{
         $query = $this->db->get_where('product',array('id'=>$id));
         $res = $query->row_array();
         return $res;
+    }
+
+    public function deleteProductById($id){
+        if(!is_int($id)){
+            return 'id错误';
+        }
+
+        $this->db->where('id',$id);
+        $this->db->delete('product');
+        return $this->db->affected_rows();
     }
 }
