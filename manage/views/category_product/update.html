@@ -1,0 +1,40 @@
+{extends file='common/index.html'}
+{block name='content'}
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">名称：</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="name" value="{$categoryInfo['name']}" placeholder="产品名称" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label no-padding-right">产品：</label>
+                <div class="col-xs-10">
+                    {foreach from=$productList item=product}
+                    <div class="col-xs-4 no-padding-left" style="margin-top:3px">
+                        <label>
+                            <input name="product" type="checkbox" class="" value="{$product.id}" {if $product.checked}checked{/if}/>
+                            <span class="lbl">{$product.name}</span>
+                        </label>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+
+            <input type="text" id="cid" value="{$categoryInfo.id}" style="display:none" />
+
+            <div class="row">
+                <div class="col-md-offset-2 col-xs-10">
+                    <button class="btn btn-info" id="save" type="button">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{/block}
+
+{block name="javascript"}
+    <script src="/assets/js/category_product.js"></script>
+{/block}

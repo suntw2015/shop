@@ -16,11 +16,23 @@ $config['menu_list'] = array(
     array(
         'title' => '分类管理',
         'icon'  => '',
-        'href'  => '/category/index',
-        'class' => ''
+        'href'  => '#',
+        'class' => '',
+        'submenu' => array(
+            array(
+                'title' => '分类信息',
+                'icon'  => '',
+                'href'  => '/category/index',
+            ),
+            array(
+                'title' => '聚合列表',
+                'icon'  => '',
+                'href'  => '/category_product/index',
+            )
+        )
     ),
     array(
-        'title' => '商品管理',
+        'title' => '产品管理',
         'icon'  => '',
         'href'  => '/product/index',
         'class' => ''

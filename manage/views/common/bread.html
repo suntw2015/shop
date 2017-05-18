@@ -1,2 +1,12 @@
 <div class="breadcrumbs" id="breadcrumbs">
+    {if !empty($bread)}
+        <ul class="breadcrumb">
+            {foreach from=$bread item=br}
+            <li>
+                <i class="{$br.icon}"></i>
+                <a href="{$br.href}">{$br.title}</a>
+            </li>
+            {/foreach}
+        </ul><!-- .breadcrumb -->
+    {/if}
 </div>

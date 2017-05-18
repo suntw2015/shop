@@ -36,6 +36,29 @@ class APP_Controller extends CI_Controller{
 	public function format_menu(){
 		$this->config->load('menu_list');
 		$menu_list = $this->config->item('menu_list');
+
+		$bread = array();
+
+		foreach($menu_list as $key=>$value){
+			$menu_list[$key]['active'] = strpos($_SERVER['REQUEST_URI'],$value['href']) !== false;
+
+			if($menu_list[$key]['active']){
+				$bread[] = $value;
+			}
+
+			if(!$menu_list[$key]['active'] && isset($value['submenu'])){
+				foreach($value['submenu'] as $k=>$v){
+					if(strpos($_SERVER['REQUEST_URI'],$v['href']) !== false){
+						$bread[] = $value;
+						$bread[] = $v;
+						$menu_list[$key]['active'] = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		$this->assign('bread',$bread);
 		$this->assign('menu_list',$menu_list);
 		$this->assign('user_info',$this->userInfo);
 	}

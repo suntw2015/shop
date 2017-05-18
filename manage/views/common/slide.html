@@ -9,7 +9,7 @@
         </a>
 
         {if !empty($menu['submenu'])}
-        <ul class="submenu">
+        <ul class="submenu" {if $menu['active']}style="display:block"{/if}>
             {foreach from=$menu['submenu'] item=submenu}
             <li>
                 <a href="{$submenu['href']}">

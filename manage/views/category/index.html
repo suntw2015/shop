@@ -32,7 +32,8 @@
                     <td class="text-center">{$category.create_time}</td>
                     <td class="text-center">{$category.update_time}</td>
                     <td>
-                        <a href="/category/update?id={$category.id}" class="btn btn-primary btn-xs">修改</a>
+                        <a href="/category/update?id={$category.id}" class="btn btn-primary btn-xs">修改基本信息</a>
+                        <a href="/category_product/update?cid={$category.id}" class="btn btn-primary btn-xs">修改子产品</a>
                         <a href="javascript:void(0);" data-id="{$category.id}" class="btn delete btn-info btn-xs">删除</a>
                     </td>
                 </tr>
