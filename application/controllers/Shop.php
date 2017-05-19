@@ -44,6 +44,12 @@ class Shop extends APP_Controller{
             }
         }
 
+        foreach($newCategory as $key=>$value){
+            if(!isset($categoryProduct[$key])){
+                unset($newCategory[$key]);
+            }
+        }
+        
         //产品倒排分类索引
         $productCategoryIndex = array();
         foreach($categoryMap as $key=>$value){
@@ -54,7 +60,7 @@ class Shop extends APP_Controller{
 
         $this->render('shop/index.html',array(
             'shop'  => $shopInfo,
-            'category'  => $category,
+            'category'  => $newCategory,
             'categoryProduct'   => $categoryProduct,
             'product'   => json_encode($product),
             'productCategoryIndex'  => json_encode($productCategoryIndex)
