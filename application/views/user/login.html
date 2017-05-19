@@ -21,18 +21,35 @@
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left.6f6409e"></use>
           </svg>
         </div>
-        <h1 class="ElemeHeader-center__Vl_mYE">登录</h1>
+        <h1 class="ElemeHeader-center__Vl_mYE" id="navTitle">登录</h1>
+        <span class="App-3QabC" id="registerSwitch">注册</span>
+        <span class="App-3QabC" id="loginSwitch" style="display:none">登录</span>
     </header>
-    <div class="App-2KuIB">
+    <div class="App-2KuIB" id="loginArea">
       <form class="PasswordLogin-1aKYa">
         <section class="PasswordLogin-2RT6e">
-            <input type="text" id="username" placeholder="用户名">
+            <input type="text" id="login-phone" placeholder="手机号">
         </section>
         <section class="PasswordLogin-2RT6e">
-            <input placeholder="密码" id="password" type="password">
+            <input placeholder="密码" id="login-password" type="password">
         </section>
         </form>
-      <button class="SubmitButton-2wG4T" id="login">登录</button>
+      <button class="SubmitButton-2wG4T" id="login" style="margin-top:30px;">登录</button>
+    </div>
+
+    <div class="App-2KuIB" id="registerArea" style="display:none">
+      <form class="PasswordLogin-1aKYa">
+        <section class="PasswordLogin-2RT6e">
+            <input type="text" id="register-username" value="" placeholder="昵称" autocomplete="off">
+        </section>
+        <section class="PasswordLogin-2RT6e phone">
+            <input type="text" id="register-phone" value="" placeholder="手机号" autocomplete="off">
+        </section>
+        <section class="PasswordLogin-2RT6e password">
+            <input placeholder="密码" id="register-password" value="" type="password" autocomplete="off">
+        </section>
+        </form>
+      <button class="SubmitButton-2wG4T" id="register" style="margin-top:30px;">注册</button>
     </div>
     <div class="App-3T916">
       <span>关于我们</span></div>
@@ -42,11 +59,22 @@
     <script type="text/javascript">
     {literal}
     $("#login").click(function(){
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var phone = $("#login-phone").val();
+        var password = $("#login-password").val();
+
+        if(!phone.length){
+            alert("手机号不能为空");
+            return;
+        }
+
+        if(!password.length){
+            alert("密码不能为空");
+            return;
+        }
+
         $.post(
             '/user/dologin',
-            {'username':username,'password':password},
+            {'phone':phone,'password':password},
             function(res){
                 if(res.code == 0){
                     window.location.href = res['data'];
@@ -56,6 +84,60 @@
                 }
             }
         )
+    });
+
+    $("#register").click(function(){
+        var username = $("#register-username").val();
+        var phone = $("#register-phone").val();
+        var password = $("#register-password").val();
+
+        if(!username.length){
+            alert("用户名不能为空");
+            return;
+        }
+
+        if(!phone.length){
+            alert("手机号不能为空");
+            return;
+        }
+
+        if(!password.length){
+            alert("密码不能为空");
+            return;
+        }
+
+        $.post(
+            '/user/doregister',
+            {'username':username,'phone':phone,'password':password},
+            function(res){
+                if(res.code == 0){
+                    alert('注册成功');
+                    window.location.href = res['data'];
+                }else{
+                    alert(res.msg);
+                    return false;
+                }
+            }
+        )
+    });
+
+
+    $("#registerSwitch").click(function(){
+        $("#navTitle").text("注册");
+        $("#registerSwitch").css("display","none");
+        $("#loginSwitch").css("display","block");
+        $("#loginArea").css("display","none");
+        $("#registerArea").css("display","block");
+
+        $("#register-phone").val("");
+        $("#register-password").val("");
+    });
+    $("#loginSwitch").click(function(){
+        $("#navTitle").text("登录");
+        $("#registerSwitch").css("display","block");
+        $("#loginSwitch").css("display","none");
+        $("#loginArea").css("display","block");
+        $("#registerArea").css("display","none");
     });
     {/literal}
     </script>

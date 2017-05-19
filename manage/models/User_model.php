@@ -10,6 +10,22 @@ class User_Model extends APP_Model{
         $this->load->database();
     }
 
+    public function get($data=array()){
+        if(!empty($data['id'])){
+            $ids = explode(",",$data['id']);
+            if(count($ids) == 1){
+                $this->db->where('id',$ids[0]);
+            }else{
+                $this->db->where_in('id',$ids);
+            }
+        }
+
+        $query = $this->db->get('user');
+        $res = $query->result_array();
+
+        return $res;
+    }
+
     public function check_normal($username,$password){
         $salt_password = $this->create_password($password);
         $query = $this->db->get_where('user',array('username'=>$username,'password'=>$salt_password));

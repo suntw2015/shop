@@ -91,12 +91,12 @@ class Order extends APP_Controller{
 		if($orderInfo['status'] >= 2){
 			$this->return_fail("订单已经确认过了");
 		}
-		$res = $this->Order_model->updateStatus($oid,2);
+		$res = $this->Order_model->confirm($oid);
 		if(empty($res) || !is_int($res) || $res < 1){
 			$this->return_fail("订单确认失败，请稍后再试");
 		}
 		
-		$this->return_success('/order');
+		$this->return_success('/order/detail?oid='.$data['oid']);
 	}
 
 	public function order(){
