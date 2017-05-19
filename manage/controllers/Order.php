@@ -18,8 +18,14 @@ class Order extends APP_Controller{
 		$orderList = $this->Order_model->get($data);
 		$this->fullOrderInfo($orderList);
 
+		$this->setDefaultValues($data,array(
+			'oid'	=> '',
+			'status'=> ''
+		));
+
 		$this->render('order/index.html',array(
-			'orderList'	=> $orderList
+			'orderList'	=> $orderList,
+			'searchdata'=> $data
 		));
 	}
 

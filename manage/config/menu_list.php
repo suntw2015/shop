@@ -37,4 +37,10 @@ $config['menu_list'] = array(
         'href'  => '/product/index',
         'class' => ''
     ),
+    array(
+        'title' => '订单管理',
+        'icon'  => '',
+        'href'  => '/order/index',
+        'class' => ''
+    )
 );
