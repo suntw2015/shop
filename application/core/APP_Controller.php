@@ -41,10 +41,6 @@ class APP_Controller extends CI_Controller{
 		$this->assign("isShowFooter",$this->isShowFooter);
 		$this->assign("footerIndex",$this->footerIndex);
 		$this->assign("isShowBack",$this->isShowBack);
-
-		// if(!in_array($this->router->fetch_method(),array('login','do_login'))){
-		// 	$this->check_auth();
-		// }
 	}
 
 	public function check_auth(){

@@ -66,7 +66,25 @@
                 </div>
             </a>
         </section>
+
+        <section class="profile-1reTe">
+            <a href="javascript:void(0);" class="index-2MEEn_0" style="padding-left:0" id="logout">
+                <div class="index-yydpu_0"><p style="text-align:center;display:block;width:100%;color:red;">退出登录</p>
+                </div>
+            </a>
+        </section>
     </div>
     {include file="common/footer.html"}
+
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    {literal}
+    $("#logout").click(function(){
+        $.removeCookie('token',{path:'/'});
+        window.location.href='/user/login';
+    });
+    {/literal}
+    </script>
 </body>
 </html>

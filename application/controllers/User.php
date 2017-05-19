@@ -1,7 +1,13 @@
 <?php
 class User extends APP_Controller{
 
+	public function __construct(){
+		parent::__construct();
+	}
+
 	public function index(){
+
+		header('Cache-Control:no-cache');
 		$this->render("user/index.html",array(
 			'isShowFooter'	=> true,
 			'footerIndex'	=> 3,
