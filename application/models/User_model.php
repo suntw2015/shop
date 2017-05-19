@@ -97,7 +97,7 @@ class User_Model extends APP_Model{
     public function checkPhoneExist($phone){
         $this->db->where('phone',$phone);
         $query = $this->db->get('user');
-        $res = $query->result_count();
+        $res = $query->num_rows();
         return $res;
     }
 
