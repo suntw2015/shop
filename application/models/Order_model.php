@@ -82,7 +82,7 @@ Class Order_model extends APP_Model{
             'address'       => $data['address'],
         );
 
-        foreach(array('sex','tag') as $value){
+        foreach(array('sex','tag','note') as $value){
             if(isset($data[$value])){
                 $info[$value] = $data[$value];
             }

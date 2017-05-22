@@ -26,12 +26,14 @@ var addressPage = {
         this.context.addressSelectBox = $("#address-select-box");
         this.context.addressCreateBox = $("#address-create-box");
         this.context.orderBox = $("#orderBox");
+        this.context.noteBox = $("#noteBox");
         this.context.titleBar = $("#titleBar");
 
         this.context.addressCreateConfirm = $("#address_create_confirm");
 
         this.context.orderAddressSelect = $("#order_address_select");
         this.context.orderAddressRecevName = $("#order");
+        this.context.orderNoteConfirm = $("#noteConfirmButton");
     },
 
     EventEle: function (e) {
@@ -44,6 +46,7 @@ var addressPage = {
         $(".form-radio").bind('click',this.formRadioClick.toEventHandler(this));
         this.context.orderAddressSelect.bind('click',this.orderAddressSelectClick.toEventHandler(this));
         this.context.addressSelectBox.bind('click',this.addressSelecte.toEventHandler(this));
+        this.context.orderNoteConfirm.bind('click',this.orderNoteConfirmClick.toEventHandler(this));
     },
 
     hashChangeFunction:function(){
@@ -62,6 +65,9 @@ var addressPage = {
                 id = window.location.hash.match('[0-9]+');
                 this.showPage('address_edit',id);
                 break;
+            case 'note':
+                this.showPage('note');
+                break;
             default:
                 this.showPage('main');break;
         }
@@ -74,6 +80,7 @@ var addressPage = {
         var addressSelectStatus = type == 'address_select' ? 'block' : 'none';
         var addressCreateStatus = type == 'address_create' ? 'block' : 'none';
         var addressUpdateStatus = type == 'address_edit' ? 'block' : 'none';
+        var orderNoteStatus = type == 'note' ? 'block' : 'none';
 
         if(addressSelectStatus == 'block'){
             title = '选择地址';
@@ -81,6 +88,8 @@ var addressPage = {
             title = '添加地址';
         }else if(addressUpdateStatus == 'block'){
             title = '修改地址';
+        }else if(orderNoteStatus == 'block'){
+            title = '订单备注';
         }
 
         //地址列表
@@ -121,10 +130,14 @@ var addressPage = {
         }else{
             $("#address-update-box").remove();
         }
+
+        //note
+        $("#noteArea").text($("#order_note").data("note"));
         
         this.context.addressSelectBox.css('display',addressSelectStatus);
         this.context.addressCreateBox.css('display',addressCreateStatus);
         this.context.orderBox.css('display',orderBoxStatus);
+        this.context.noteBox.css('display',orderNoteStatus);
         this.context.titleBar.text(title);
     },
 
@@ -173,6 +186,12 @@ var addressPage = {
 
     orderAddressSelectClick:function(){
         location.hash = 'address';
+    },
+
+    orderNoteConfirmClick:function(e){
+        var note = $("#noteArea").val();
+        $("#order_note").text(note).data('note',note);
+        history.go(-1);
     },
 
     // 选择地址

@@ -67,9 +67,11 @@
                         <p data-v-e08ad408="">{$orderInfo.address}</p>
                     </div>
                 </li>
-                <!--<li data-v-e08ad408="" class="listitem">
-                    <span data-v-e08ad408="">配送方式：</span>蜂鸟专送
-                </li>-->
+                {if !empty($orderInfo['note'])}
+                <li data-v-e08ad408="" class="listitem">
+                    <span data-v-e08ad408="">订单备注：</span>{$orderInfo['note']}
+                </li>
+                {/if}
                 <!--<li data-v-e08ad408="" class="listitem">
                     <span data-v-e08ad408="">配送骑手：</span>于海龙，
                     <a data-v-e08ad408="" href="tel13734704940" class="tel">13734704940</a>

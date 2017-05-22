@@ -107,11 +107,11 @@
         </section>
         <div>
             <section class="checkout-section">
-                <a href="#/notes" class="">
+                <a href="#note" class="">
                     <div class="cart-item">
                         <span class="cartitem-left">订单备注</span>
                         <span class="text-ellipsis cartitem-right">
-                            <span>口味、偏好等</span>
+                            <span id="order_note" data-note="{$orderInfo.note}">{if empty($orderInfo.note)}特殊情况说明{else}{$orderInfo.note}{/if}</span>
                             <svg>
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
                             </svg>
@@ -144,6 +144,7 @@
 </div>
 
 {include file="address/select.html"}
+{include file="address/note.html"}
 {/block}
 
 {block name="javascript"}
@@ -156,13 +157,14 @@ $("#submit").click(function(){
     var phone = $("#order_phone").text();
     var address = $("#order_address").text();
     var tag = $("#order_tag").text();
+    var note = $("#order_note").data("note");
 
     if(recev_name == '' || phone == '' || address == ''){
         alert('请选择收货地址');
         return;
     }
 
-    $.post("/order/confirm",{'oid':oid,'recev_name':recev_name,'phone':phone,'address':address,'tag':tag},function(res){
+    $.post("/order/confirm",{'oid':oid,'recev_name':recev_name,'phone':phone,'address':address,'tag':tag,'note':note},function(res){
         if(res.code == 0){
             location.href = res.data;
         }else{
