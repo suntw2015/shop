@@ -85,7 +85,7 @@ class User_Model extends APP_Model{
             'password'  => $this->create_password($data['password']),
             'phone'     => $data['phone'],
             'role'      => 1,
-            'create_time'   => time()
+            'create_time'   => date('Y-m-d H:i:s')
         );
 
         $this->db->insert('user',$userinfo);

@@ -34,7 +34,7 @@ Class Order_model extends APP_Model{
             return;
         }
 
-        $data['create_time'] = date('Y-m-d');
+        $data['create_time'] = date('Y-m-d H:i:s');
         $query = $this->db->insert($this->tableName,$data);
         $result = $this->db->insert_id();
 
@@ -51,7 +51,7 @@ Class Order_model extends APP_Model{
     public function updateStatus($oid,$status){
         $this->db->where("oid",$oid);
         $this->db->set("status",$status);
-        $this->db->set("update_time",date('Y-m-d'));
+        $this->db->set("update_time",date('Y-m-d H:i:s'));
         $this->db->update($this->tableName);
         $row = $this->db->affected_rows();
 
