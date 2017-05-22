@@ -1,170 +1,176 @@
-<!doctype html>
-<html lang="zh-cmn-Hans">
-<head>
-    <title>确认订单</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <script src="/assets/js/flexible.js" crossorigin="anonymous"></script>
-    <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
-    <link href="/assets/css/vendor.css" rel="stylesheet">
-    <link href="/assets/css/order_confirm.css" rel="stylesheet">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
+{extends file="common/index.html"}
+{block name="css"}
+<link href="/assets/css/checkout.css" rel="stylesheet">
+{/block}
 
-<body style="font-size: 24px;">
-    {include file="common/svg.html"}
-    <div class="root">
-        {include file="common/header.html"}
-        <div class="checkout viewbody">
-            <div>
-                <section data-v-74568ee4="" class="cart-address checkout-section">
-                    <div data-v-74568ee4="" class="address-item">
-                        <h2 data-v-74568ee4="" class="address-name">
-                            <b data-v-74568ee4="">{$userInfo['username']}</b>
-                            <span data-v-74568ee4="">{$userInfo['phone']}</span></h2>
-                        <!--<p data-v-74568ee4="" class="address-detail">
-                            <span class="address-tag-2HUG1_0 address-tag-23jXi_0" data-v-74568ee4="">家</span>龙锦苑一区8号楼5单元502
-                        </p>-->
-                        <svg data-v-74568ee4="">
-                            <use data-v-74568ee4="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+{block name="content"}
+<div class="checkout viewbody" id="orderBox">
+    <div>
+        <!-- 已经选择收货地址的时候 -->
+        <section data-v-74568ee4="" class="cart-address checkout-section" id="order_address_select">
+            <div data-v-74568ee4="" class="address-item">
+                {if empty($order.address)}
+                请添加一个收货地址
+                {else}
+                <h2 data-v-74568ee4="" class="address-name">
+                    <b data-v-74568ee4="" id="order_recev_name">{$order.recev_name}</b>
+                    <span data-v-74568ee4="" id="order_phone">{$order.phone}</span>
+                </h2>
+                <p data-v-74568ee4="" class="address-detail" id="order_address">
+                    <span class="address-tag-2HUG1_0 address-tag-23jXi_0" data-v-74568ee4="" id="order_tag">{$order.tag}</span>{$order.address}
+                </p>
+                {/if}
+                <svg data-v-74568ee4="">
+                    <use data-v-74568ee4="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                </svg>
+            </div>
+        </section>
+
+        <!--配送-->
+        <!--<section class="delivery checkout-section">
+            <div class="delivery-left">
+                <span>送达时间</span></div>
+            <div class="delivery-select">
+                <select dir="rtl">
+                    <option value="">尽快送达 | 预计18:24</option>
+                    <option value="18:45">18:45-19:00</option>
+                    <option value="19:00">19:00-19:15</option>
+                    <option value="19:15">19:15-19:30</option>
+                    <option value="19:30">19:30-19:45</option>
+                    <option value="19:45">19:45-20:00</option>
+                    <option value="20:00">20:00-20:15</option>
+                    <option value="20:15">20:15-20:30</option>
+                    <option value="20:30">20:30-20:45</option>
+                    <option value="20:45">20:45-21:00</option></select>
+                <svg>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                </svg>
+                <div class="delivery-extra">
+                    <span class="fengniao">蜂鸟专送</span>
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                    </svg>
+                </div>
+            </div>
+        </section>-->
+
+        <!--支付方式-->
+        <!--<section class="checkout-section">
+            <section data-v-522bb7c6="">
+                <div data-v-522bb7c6="" class="cart-item">
+                    <span data-v-522bb7c6="">支付方式</span>
+                    <span data-v-522bb7c6="" class="cartitem-right">在线支付
+                        <svg data-v-522bb7c6="">
+                            <use data-v-522bb7c6="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
+                    </span>
+                </div>
+                <aside data-v-522bb7c6="" class="paylist">
+                    <header data-v-522bb7c6="" class="paylist-header">支付方式</header>
+                    <div data-v-522bb7c6="" class="paylist-item">
+                        <span data-v-522bb7c6="">在线支付</span>
+                        <svg data-v-522bb7c6="" class="icon-select item-selected">
+                            <use data-v-522bb7c6="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select"></use>
                         </svg>
                     </div>
-                </section>
-
-                <!--配送-->
-                <!--<section class="delivery checkout-section">
-                    <div class="delivery-left">
-                        <span>送达时间</span></div>
-                    <div class="delivery-select">
-                        <select dir="rtl">
-                            <option value="">尽快送达 | 预计18:24</option>
-                            <option value="18:45">18:45-19:00</option>
-                            <option value="19:00">19:00-19:15</option>
-                            <option value="19:15">19:15-19:30</option>
-                            <option value="19:30">19:30-19:45</option>
-                            <option value="19:45">19:45-20:00</option>
-                            <option value="20:00">20:00-20:15</option>
-                            <option value="20:15">20:15-20:30</option>
-                            <option value="20:30">20:30-20:45</option>
-                            <option value="20:45">20:45-21:00</option></select>
-                        <svg>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-                        </svg>
-                        <div class="delivery-extra">
-                            <span class="fengniao">蜂鸟专送</span>
+                </aside>
+                <div data-v-522bb7c6="" class="mask"></div>
+            </section>
+            <div class="cart-item">
+                <span>红包</span>
+                <span class="text-ellipsis cartitem-right">暂时只在饿了么 APP 中支持
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
+                </span>
+            </div>
+        </section>-->
+        <section data-v-0701a830="" class="cart-group checkout-section">
+            <h3 data-v-0701a830="" class="shopinfo">
+                <img data-v-0701a830="" src="{$shopInfo['cover_img']}">{$shopInfo['name']}</h3>
+            <ul data-v-0701a830="" class="foodlist">
+                {foreach from=$orderInfo['productList'] item=product}
+                <li data-v-0701a830="">
+                    <span data-v-0701a830="" class="cellname">{$product['item_name']}</span>
+                    <span data-v-0701a830="" class="cellquantity">x&nbsp;{$product['item_count']}</span>
+                    <span data-v-0701a830="" class="celltotal">¥{$product['item_price']}</span>
+                </li>
+                {/foreach}
+            </ul>
+            <!--<div data-v-0701a830="" class="fee">
+                <div data-v-0701a830="">餐盒</div>
+                <div data-v-0701a830="">¥1.5</div>
+            </div>-->
+            <div data-v-0701a830="" class="total">
+                <div data-v-0701a830="">
+                    <span data-v-0701a830="">订单 ¥{$orderInfo['price']}</span>&nbsp;&nbsp;
+                    <!----></div>
+                <!--<span data-v-0701a830="">待支付 ¥{$orderInfo['price']}</span></div>-->
+        </section>
+        <div>
+            <section class="checkout-section">
+                <a href="#/notes" class="">
+                    <div class="cart-item">
+                        <span class="cartitem-left">订单备注</span>
+                        <span class="text-ellipsis cartitem-right">
+                            <span>口味、偏好等</span>
                             <svg>
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
                             </svg>
-                        </div>
-                    </div>
-                </section>-->
-
-                <!--支付方式-->
-                <!--<section class="checkout-section">
-                    <section data-v-522bb7c6="">
-                        <div data-v-522bb7c6="" class="cart-item">
-                            <span data-v-522bb7c6="">支付方式</span>
-                            <span data-v-522bb7c6="" class="cartitem-right">在线支付
-                                <svg data-v-522bb7c6="">
-                                    <use data-v-522bb7c6="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
-                            </span>
-                        </div>
-                        <aside data-v-522bb7c6="" class="paylist">
-                            <header data-v-522bb7c6="" class="paylist-header">支付方式</header>
-                            <div data-v-522bb7c6="" class="paylist-item">
-                                <span data-v-522bb7c6="">在线支付</span>
-                                <svg data-v-522bb7c6="" class="icon-select item-selected">
-                                    <use data-v-522bb7c6="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select"></use>
-                                </svg>
-                            </div>
-                        </aside>
-                        <div data-v-522bb7c6="" class="mask"></div>
-                    </section>
-                    <div class="cart-item">
-                        <span>红包</span>
-                        <span class="text-ellipsis cartitem-right">暂时只在饿了么 APP 中支持
-                            <svg>
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
                         </span>
                     </div>
-                </section>-->
-                <section data-v-0701a830="" class="cart-group checkout-section">
-                    <h3 data-v-0701a830="" class="shopinfo">
-                        <img data-v-0701a830="" src="{$shopInfo['cover_img']}">{$shopInfo['name']}</h3>
-                    <ul data-v-0701a830="" class="foodlist">
-                        {foreach from=$orderInfo['productList'] item=product}
-                        <li data-v-0701a830="">
-                            <span data-v-0701a830="" class="cellname">{$product['item_name']}</span>
-                            <span data-v-0701a830="" class="cellquantity">x&nbsp;{$product['item_count']}</span>
-                            <span data-v-0701a830="" class="celltotal">¥{$product['item_price']}</span>
-                        </li>
-                        {/foreach}
-                    </ul>
-                    <!--<div data-v-0701a830="" class="fee">
-                        <div data-v-0701a830="">餐盒</div>
-                        <div data-v-0701a830="">¥1.5</div>
-                    </div>-->
-                    <div data-v-0701a830="" class="total">
-                        <div data-v-0701a830="">
-                            <span data-v-0701a830="">订单 ¥{$orderInfo['price']}</span>&nbsp;&nbsp;
-                            <!----></div>
-                        <!--<span data-v-0701a830="">待支付 ¥{$orderInfo['price']}</span></div>-->
-                </section>
-                <div>
-                    <section class="checkout-section">
-                        <!--<a href="#/notes" class="">
-                            <div class="cart-item">
-                                <span class="cartitem-left">订单备注</span>
-                                <span class="text-ellipsis cartitem-right">
-                                    <span>口味、偏好等</span>
-                                    <svg>
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-                                    </svg>
-                                </span>
-                            </div>
-                        </a>-->
-                        <!--<a href="#/invoice" class="">
-                            <div class="cart-item disabled">
-                                <span class="cartitem-left">发票抬头</span>
-                                <span class="text-ellipsis cartitem-right">
-                                    <span>商家不支持开发票</span></span>
-                            </div>
-                        </a>-->
-                    </section>
-                </div>
-                <footer>
-                    <span>总价 ¥{$orderInfo['price']}</span>
-                    <small style="display: none;">｜优惠 ¥0</small>
-                    <button class="submitbtn" id="submit">确认下单</button></footer>
-            </div>
-            <!----></div>
-        <div>
-            <div class="Load-wrapper_3h35P-W Load-fixed_1L8WA4k" style="display: none;">
-                <div class="Load-loading-main_1LVs9py">
-                    <div class="Load-loading-icon_2LvpNhI"></div>
-                    <div class="Load-loading-bottom_1G6-yJs"></div>
-                </div>
-            </div>
+                </a>
+                <!--<a href="#/invoice" class="">
+                    <div class="cart-item disabled">
+                        <span class="cartitem-left">发票抬头</span>
+                        <span class="text-ellipsis cartitem-right">
+                            <span>商家不支持开发票</span></span>
+                    </div>
+                </a>-->
+            </section>
+        </div>
+        <footer>
+            <span>总价 ¥{$orderInfo['price']}</span>
+            <small style="display: none;">｜优惠 ¥0</small>
+            <button class="submitbtn" id="submit">确认下单</button>
+        </footer>
+    </div>
+</div>
+<div>
+    <div class="Load-wrapper_3h35P-W Load-fixed_1L8WA4k" style="display: none;">
+        <div class="Load-loading-main_1LVs9py">
+            <div class="Load-loading-icon_2LvpNhI"></div>
+            <div class="Load-loading-bottom_1G6-yJs"></div>
         </div>
     </div>
+</div>
 
-    <script src="/assets/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript">
-    var oid = {$oid};
-    {literal}
-        $("#submit").click(function(){
-            $.post("/order/confirm",{oid:oid},function(res){
-                if(res.code == 0){
-                    location.href = res.data;
-                }else{
-                    var msg = res.msg != undefined ? res.msg : '确认失败，请稍后再试';
-                    alert(msg);
-                }
-            });
-        })
-    {/literal}
-    </script>
+{include file="address/select.html"}
+{/block}
 
-</body>
-</html>
+{block name="javascript"}
+<script src="/assets/js/address.js"></script>
+<script type="text/javascript">
+var oid = {$oid};
+{literal}
+$("#submit").click(function(){
+    var recev_name = $("#order_recev_name").text();
+    var phone = $("#order_phone").text();
+    var address = $("#order_address").text();
+    var tag = $("#order_tag").text();
+
+    if(recev_name == '' || phone == '' || address == ''){
+        alert('请选择收货地址');
+        return;
+    }
+
+    $.post("/order/confirm",{'oid':oid,'recev_name':recev_name,'phone':phone,'address':address,'tag':tag},function(res){
+        if(res.code == 0){
+            location.href = res.data;
+        }else{
+            var msg = res.msg != undefined ? res.msg : '确认失败，请稍后再试';
+            alert(msg);
+        }
+    });
+});
+{/literal}    
+</script>
+{/block}

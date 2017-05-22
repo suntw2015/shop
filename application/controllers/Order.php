@@ -67,7 +67,7 @@ class Order extends APP_Controller{
 			'oid'		=> $oid,
 			'isShowBack'	=> true,
 			'title'			=> '确认订单',
-			'backUrl'		=> '/shop/index'
+			'backUrl'		=> ''
 		));
 	}
 
@@ -91,9 +91,9 @@ class Order extends APP_Controller{
 		if($orderInfo['status'] >= 2){
 			$this->return_fail("订单已经确认过了");
 		}
-		$res = $this->Order_model->confirm($oid);
-		if(empty($res) || !is_int($res) || $res < 1){
-			$this->return_fail("订单确认失败，请稍后再试");
+		$res = $this->Order_model->confirm($data);
+		if(!is_int($res) || $res < 1){
+			$this->return_fail($res);
 		}
 		
 		$this->return_success('/order/detail?oid='.$data['oid']);

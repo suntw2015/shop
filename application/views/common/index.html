@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <title>{$title}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <script src="/assets/js/flexible.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
+    <link href="/assets/css/vendor.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    {block name="css"}
+    {/block}
+</head>
+
+<body style="font-size: 24px;">
+    {include file="common/svg.html"}
+    <div class="root" id="root">
+        {include file="common/header.html"}
+        {block name="content"}
+        {/block}
+        {include file="common/footer.html"}
+    </div>
+
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        $("#backButton").click(function(){
+            var backurl = $(this).data('url');
+            if(backurl == undefined || backurl == ''){
+                history.go(-1);
+            }else{
+                location.href = backurl;
+            }
+        });
+    </script>
+    {block name="javascript"}
+    {/block}
+</body>
+</html>

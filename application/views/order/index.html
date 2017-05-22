@@ -1,76 +1,60 @@
-<!doctype html>
-<html lang="zh-cmn-Hans">
-<head>
-    <title>订单列表</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <script src="/assets/js/flexible.js" crossorigin="anonymous"></script>
-    <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
-    <link href="/assets/css/vendor.css" rel="stylesheet">
-    <link href="/assets/css/order.css" rel="stylesheet">
-    <!--<link href="/assets/css/main.css" rel="stylesheet">-->
-</head>
-<body style="font-size: 24px;">
-    {include file="common/svg.html"}
-    <div>
-        <div data-v-08f9d9b7="">
-            {include file="common/header.html"}
+{extends file="common/index.html"}
+{block name="css"}
+<link href="/assets/css/order.css" rel="stylesheet">
+{/block}
 
-            {if empty($orderList)}
-            <section class="nodatatipWrap NoDataTip-wrapper_1Gwf0tm" img="no-log" data-v-08f9d9b7="">
-                <img src="//github.elemecdn.com/eleme/fe-static/master/media/empty/error-load.png">
-                <h3>还没有订单</h3>
-            </section>
-            {else}
-            <div data-v-08f9d9b7="" infinite-scroll-distance="20" class="orderbody">
-                {foreach from=$orderList item=order}
-                <a data-v-e8380afc="" href="javascript:;" class="ordercard" data-v-08f9d9b7="">
-                    <div data-v-e8380afc="" class="ordercard-body" data-url="/order/detail?oid={$order['oid']}">
-                        <div data-v-e8380afc="" class="ordercard-avatar">
-                            <img data-v-e8380afc="" src="{$shopInfo['cover_img']}"></div>
-                        <div data-v-e8380afc="" class="ordercard-content">
-                            <div data-v-e8380afc="" class="ordercard-head">
-                                <div data-v-e8380afc="" class="title">
-                                    <p data-v-e8380afc="" class="name">
-                                        <span data-v-e8380afc="" class="content">{$shopInfo['name']}</span>
-                                        <svg data-v-e8380afc="">
-                                            <use data-v-e8380afc="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-                                        </svg>
-                                    </p>
-                                    <p data-v-e8380afc="" class="status">{$order['status_text']}</p>
-                                </div>
-                                <p data-v-e8380afc="" class="datetime">{$order['create_time']}</p>
-                            </div>
-                            <div data-v-e8380afc="" class="ordercard-detail">
-                                <p data-v-e8380afc="" class="detail">
-                                    <!--<span data-v-e8380afc="" class="productname ellipsis">小米粥</span>-->
-                                    <span data-v-e8380afc="">共{$order['item_count']}件商品</span></p>
-                                <p data-v-e8380afc="" class="price">¥{$order['price']}</p></div>
+{block name="content"}
+{if empty($orderList)}
+    <section class="nodatatipWrap NoDataTip-wrapper_1Gwf0tm" img="no-log" data-v-08f9d9b7="">
+        <img src="//github.elemecdn.com/eleme/fe-static/master/media/empty/error-load.png">
+        <h3>还没有订单</h3>
+    </section>
+    {else}
+    <div data-v-08f9d9b7="" infinite-scroll-distance="20" class="orderbody">
+        {foreach from=$orderList item=order}
+        <a data-v-e8380afc="" href="javascript:;" class="ordercard" data-v-08f9d9b7="">
+            <div data-v-e8380afc="" class="ordercard-body" data-url="/order/detail?oid={$order['oid']}">
+                <div data-v-e8380afc="" class="ordercard-avatar">
+                    <img data-v-e8380afc="" src="{$shopInfo['cover_img']}"></div>
+                <div data-v-e8380afc="" class="ordercard-content">
+                    <div data-v-e8380afc="" class="ordercard-head">
+                        <div data-v-e8380afc="" class="title">
+                            <p data-v-e8380afc="" class="name">
+                                <span data-v-e8380afc="" class="content">{$shopInfo['name']}</span>
+                                <svg data-v-e8380afc="">
+                                    <use data-v-e8380afc="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                                </svg>
+                            </p>
+                            <p data-v-e8380afc="" class="status">{$order['status_text']}</p>
                         </div>
+                        <p data-v-e8380afc="" class="datetime">{$order['create_time']}</p>
                     </div>
-                    {if $order['status'] == 1}
-                    <div data-v-e8380afc="" class="ordercard-bottom">
-                        <button data-v-e8380afc="" class="cardbutton" data-url="/order/preorder?oid={$order['oid']}">确认订单</button>
-                    </div>
-                    {/if}
-                </a>
-                {/foreach}
-                <div data-v-08f9d9b7="" class="orderbody-bottom">
-                    <p data-v-08f9d9b7="" class="loading" style="display: none;">
-                        <svg data-v-08f9d9b7="" class="loading-svg">
-                            <use data-v-08f9d9b7="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#loading"></use>
-                        </svg>
-                    </p>
+                    <div data-v-e8380afc="" class="ordercard-detail">
+                        <p data-v-e8380afc="" class="detail">
+                            <!--<span data-v-e8380afc="" class="productname ellipsis">小米粥</span>-->
+                            <span data-v-e8380afc="">共{$order['item_count']}件商品</span></p>
+                        <p data-v-e8380afc="" class="price">¥{$order['price']}</p></div>
                 </div>
             </div>
+            {if $order['status'] == 1}
+            <div data-v-e8380afc="" class="ordercard-bottom">
+                <button data-v-e8380afc="" class="cardbutton" data-url="/order/preorder?oid={$order['oid']}">确认订单</button>
+            </div>
             {/if}
-            {include file="common/footer.html"}
+        </a>
+        {/foreach}
+        <div data-v-08f9d9b7="" class="orderbody-bottom">
+            <p data-v-08f9d9b7="" class="loading" style="display: none;">
+                <svg data-v-08f9d9b7="" class="loading-svg">
+                    <use data-v-08f9d9b7="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#loading"></use>
+                </svg>
+            </p>
         </div>
     </div>
-</body>
+    {/if}
+{/block}
 
-<script src="/assets/js/jquery-2.0.3.min.js"></script>
+{block name="javascript"}
 <script type="text/javascript">
     {literal}
         $(".ordercard-body").click(function(){
@@ -83,4 +67,4 @@
         })
     {/literal}
 </script>
-</html>
+{/block}

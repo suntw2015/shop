@@ -65,11 +65,31 @@ Class Order_model extends APP_Model{
         return $this->db->delete();
     }
 
-    public function confirm($oid){
-        $this->db->where("oid",$oid);
-        $this->db->set("status",2);
-        $this->db->set("confirm_time",date('Y-m-d'));
-        $this->db->update($this->tableName);
+    public function confirm($data){
+        $checkedField = array('oid'=>'订单号','recev_name'=>'收货人姓名','phone'=>'手机号','address'=>'地址');
+        foreach($checkedField as $key=>$value){
+            if(!isset($data[$key])){
+                return $value."不能为空";
+            }
+        }
+
+        $info = array(
+            'status'        => 2,
+            'confirm_time'  => date('Y-m-d H:i:s'),
+            'update_time'  => date('Y-m-d H:i:s'),
+            'recev_name'    => $data['recev_name'],
+            'phone'         => $data['phone'],
+            'address'       => $data['address'],
+        );
+
+        foreach(array('sex','tag') as $value){
+            if(isset($data[$value])){
+                $info[$value] = $data[$value];
+            }
+        }
+
+        $this->db->where("oid",$data['oid']);
+        $this->db->update($this->tableName,$info);
         $row = $this->db->affected_rows();
 
         return $row;

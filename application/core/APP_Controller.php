@@ -26,6 +26,9 @@ class APP_Controller extends CI_Controller{
 			),
 			'order'	=> array(
 				'*'
+			),
+			'address' => array(
+				'*'
 			)
 		);
 

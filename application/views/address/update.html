@@ -1,0 +1,45 @@
+<!--新增地址-->
+<div data-v-e4c82014="" class="addressfrom viewbody" id="address-update-box" style="display:none">
+    <div data-v-e4c82014="" class="formbloack username">
+        <div data-v-e4c82014="" class="label-wrap">联系人</div>
+        <div data-v-e4c82014="" class="input-group-wrap">
+            <div data-v-e4c82014="" class="input-wrap">
+                <input data-v-e4c82014="" id="address_update_name" value="{$address.name}" placeholder="你的姓名"></div>
+            <div data-v-e4c82014="" class="input-wrap bottom">
+                <span data-v-e4c82014="" class="form-radio">
+                    <span data-v-e4c82014="" class="radio-icon {if $address.sex eq 1}checked{/if}" name="address_update_sex" value="1"></span>先生
+                </span>
+                <span data-v-e4c82014="" class="form-radio">
+                    <span data-v-e4c82014="" class="radio-icon {if $address.sex eq 2}checked{/if}" name="address_update_sex" value="2"></span>女士
+                </span>
+            </div>
+        </div>
+    </div>
+    <div data-v-e4c82014="" class="formbloack phone">
+        <div data-v-e4c82014="" class="label-wrap">联系电话</div>
+        <div data-v-e4c82014="" class="input-group-wrap rightbtn">
+            <div data-v-e4c82014="" class="input-wrap">
+                <input data-v-e4c82014="" placeholder="你的手机号" value="{$address.phone}" id="address_update_phone" type="tel">
+            </div>
+        </div>
+    </div>
+    <div data-v-e4c82014="" class="formbloack address">
+        <div data-v-e4c82014="" class="label-wrap">收货地址</div>
+        <div data-v-e4c82014="" class="input-group-wrap">
+            <div data-v-e4c82014="" class="input-wrap top">
+                <input data-v-e4c82014="" id="address_update_address" value="{$address.address}" placeholder="收货详细地址">
+            </div>
+        </div>
+    </div>
+    <div data-v-e4c82014="" class="formbloack tags">
+        <div data-v-e4c82014="" class="label-wrap">标签</div>
+        <div data-v-e4c82014="" class="input-wrap tags">
+            <input data-v-e4c82014="" id="address_update_tag" value="{$address.tag}" placeholder="地址标签">
+        </div>
+    </div>
+    <div data-v-e4c82014="" class="form-button-wrap">
+        <button data-v-e4c82014="" type="button" class="form-button" id="address_update_confirm">确定</button>
+    </div>
+    <input type="text" id="address_id" style="display:none" />
+</div>
+<!--新增地址结束-->

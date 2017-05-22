@@ -1,83 +1,71 @@
-<!doctype html>
-<html lang="zh-cmn-Hans">
-<head>
-    <title>我的</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <script src="/assets/js/flexible.js" crossorigin="anonymous"></script>
-    <script src="/assets/js/perf.min.js" crossorigin="anonymous"></script>
-    <link href="/assets/css/vendor.css" rel="stylesheet">
-    <link href="/assets/css/user_index.css" rel="stylesheet">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
-<body style="font-size: 24px;">
-    {include file="common/svg.html"}
-    <div>
-        {include file="common/header.html"}
-        <section>
-            <div class="profile-3g0uv">
-                <img src="{$userInfo['head_img']}">
-                <div class="profile-xfCcC">
-                    <p class="profile-1_mtk">{$userInfo['username']}</p>
-                    <p class="profile-1UP72">
-                        <svg fill="#fff">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mobile"></use>
-                        </svg>
-                        <span>{$userInfo['phone']}</span>
-                        <!----></p>
-                </div>
-                <span class="profile-2XuMq">
+{extends file="common/index.html"}
+{block name="css"}
+<link href="/assets/css/user_index.css" rel="stylesheet">
+{/block}
+
+{block name="content"}
+    <section>
+        <div class="profile-3g0uv">
+            <img src="{$userInfo['head_img']}">
+            <div class="profile-xfCcC">
+                <p class="profile-1_mtk">{$userInfo['username']}</p>
+                <p class="profile-1UP72">
                     <svg fill="#fff">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mobile"></use>
                     </svg>
+                    <span>{$userInfo['phone']}</span>
+                    <!----></p>
+            </div>
+            <span class="profile-2XuMq">
+                <svg fill="#fff">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                </svg>
+            </span>
+        </div>
+    </section>
+    <!--<div class="index-1G7HV_0">
+        <a href="/profile/balance/#/" class="index-1ryAh_0">
+            <p>
+                <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">0.00</span>
+                <span class="index-2V-Hh_0">元</span></p>
+            <p class="index-3S6cZ_0">余额</p></a>
+        <a href="/profile/benefit/" class="index-1ryAh_0">
+            <p>
+                <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">0</span>
+                <span class="index-2V-Hh_0">个</span></p>
+            <p class="index-3S6cZ_0">优惠</p></a>
+        <a href="/profile/points/" class="index-1ryAh_0">
+            <p>
+                <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">10313</span>
+                <span class="index-2V-Hh_0">分</span></p>
+            <p class="index-3S6cZ_0">积分</p></a>
+    </div>-->
+    <section class="profile-1reTe">
+        <a href="/order/index/" class="index-2MEEn_0">
+            <aside class="index-161Mm_0">
+                <svg fill="#4aa5f0">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order"></use>
+                </svg>
+            </aside>
+            <div class="index-yydpu_0">我的订单
+                <span class="index-3Z8It_0">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
                 </span>
             </div>
-        </section>
-        <!--<div class="index-1G7HV_0">
-            <a href="/profile/balance/#/" class="index-1ryAh_0">
-                <p>
-                    <span class="index-2FmrF_0" style="color: rgb(255, 153, 0);">0.00</span>
-                    <span class="index-2V-Hh_0">元</span></p>
-                <p class="index-3S6cZ_0">余额</p></a>
-            <a href="/profile/benefit/" class="index-1ryAh_0">
-                <p>
-                    <span class="index-2FmrF_0" style="color: rgb(255, 95, 62);">0</span>
-                    <span class="index-2V-Hh_0">个</span></p>
-                <p class="index-3S6cZ_0">优惠</p></a>
-            <a href="/profile/points/" class="index-1ryAh_0">
-                <p>
-                    <span class="index-2FmrF_0" style="color: rgb(106, 194, 11);">10313</span>
-                    <span class="index-2V-Hh_0">分</span></p>
-                <p class="index-3S6cZ_0">积分</p></a>
-        </div>-->
-        <section class="profile-1reTe">
-            <a href="/order/index/" class="index-2MEEn_0">
-                <aside class="index-161Mm_0">
-                    <svg fill="#4aa5f0">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#order"></use>
-                    </svg>
-                </aside>
-                <div class="index-yydpu_0">我的订单
-                    <span class="index-3Z8It_0">
-                        <svg>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
-                    </span>
-                </div>
-            </a>
-        </section>
+        </a>
+    </section>
 
-        <section class="profile-1reTe">
-            <a href="javascript:void(0);" class="index-2MEEn_0" style="padding-left:0" id="logout">
-                <div class="index-yydpu_0"><p style="text-align:center;display:block;width:100%;color:red;">退出登录</p>
-                </div>
-            </a>
-        </section>
-    </div>
-    {include file="common/footer.html"}
+    <section class="profile-1reTe">
+        <a href="javascript:void(0);" class="index-2MEEn_0" style="padding-left:0" id="logout">
+            <div class="index-yydpu_0"><p style="text-align:center;display:block;width:100%;color:red;">退出登录</p>
+            </div>
+        </a>
+    </section>
+{/block}
 
-    <script src="/assets/js/jquery-2.0.3.min.js"></script>
-    <script src="/assets/js/jquery.cookie.js"></script>
+{block name="javascript"}
+<script src="/assets/js/jquery.cookie.js"></script>
     <script type="text/javascript">
     {literal}
     $("#logout").click(function(){
@@ -86,5 +74,4 @@
     });
     {/literal}
     </script>
-</body>
-</html>
+{/block}
