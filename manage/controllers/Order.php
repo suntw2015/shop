@@ -53,8 +53,8 @@ class Order extends APP_Controller{
 		foreach($orderList as $key=>&$value){
 			$uid = $value['user_id'];
 			$status = $value['status'];
-			$value['username'] = $userList[$uid]['username'];
-			$value['phone'] = $userList[$uid]['phone'];
+			// $value['username'] = $userList[$uid]['username'];
+			// $value['phone'] = $userList[$uid]['phone'];
 			$value['status_text'] = isset($this->orderStatus[$status]) ? $this->orderStatus[$status] : '';
 		}
 	}
