@@ -81,7 +81,12 @@
 </div>
 
 <div class="menuview-2hUkG">
-    {if empty($category) || empty($categoryProduct)}
+    {if $shop.status eq 1 }
+    <div class="menuview-2iJo3">
+        <img src="//github.elemecdn.com/eleme/fe-static/1cb05f59/media/empty/no-food.png" /> 
+        <p>{$shop.notice}</p>
+    </div>
+    {elseif empty($category) || empty($categoryProduct)}
     <div class="menuview-2iJo3">
         <img src="//github.elemecdn.com/eleme/fe-static/1cb05f59/media/empty/no-food.png" /> 
         <p>没有商品</p> 
