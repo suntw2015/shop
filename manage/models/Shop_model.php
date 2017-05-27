@@ -44,7 +44,7 @@ class Shop_model extends APP_Model{
             $this->db->set('activity_desc',$data['activity_desc']);
         }
 
-        if(isset($data['status']) && is_int($data['status']) && in_array($data['status'],array(0,1))){
+        if(isset($data['status']) && in_array($data['status'],array(0,1))){
             $this->db->set('status',$data['status']);
         }
 
