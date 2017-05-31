@@ -162,7 +162,7 @@
         <img src="//github.elemecdn.com/eleme/fe-static/1cb05f59/media/empty/no-food.png" /> 
         <p>{$shop.notice}</p>
     </div>
-    {elseif empty($category) || empty($categoryProduct)}
+    {elseif empty($categoryProduct)}
     <div class="menuview-2iJo3">
         <img src="//github.elemecdn.com/eleme/fe-static/1cb05f59/media/empty/no-food.png" /> 
         <p>没有商品</p> 
@@ -174,20 +174,18 @@
     <main class="menuview-i6fQ3">
 
         <!--left-->
-        {if !empty($category)}
         <ul class="menucategory-29kyE menuview-2_lFf" id="categoryList">
             <!--<li class="menucategory-JnDmc menucategory-2MBNs menucategory-3e27M">
                 <img src="//fuss10.elemecdn.com/5/da/3872d782f707b4c82ce4607c73d1ajpeg.jpeg" class="menucategory-375ij" /> <span class="menucategory-qwsbd">热销榜</span>
             </li>-->
-            {foreach from=$category item=f name=category}
-            <li class="menucategory-3e27M {if $smarty.foreach.category.first}menucategory-JnDmc{/if}" tag='li' data-id="{$f.id}">
+            {foreach from=$categoryProduct item=category name=cate}
+            <li class="menucategory-3e27M {if $smarty.foreach.cate.first}menucategory-JnDmc{/if}" tag='li' data-id="{$category.categoryId}">
                 
                 <span class="menucategory-28BIn" tag="count"></span>
-                <span class="menucategory-qwsbd">{$f.name}</span>
+                <span class="menucategory-qwsbd">{$category.categoryName}</span>
             </li>
             {/foreach}
         </ul>
-        {/if}
 
         <!--right-->
         <section data-v-81584c58="" class="container menuview-JqDMu" id="productList">

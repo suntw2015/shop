@@ -49,6 +49,8 @@ class Category_model extends APP_Model{
         }
 
         $data['cid'] = (int)$data['cid'];
+        $data['sort'] = (int)$data['sort'];
+        $data['status'] = (int)$data['status'];
 
         if(!empty($data['sort']) && !is_int($data['sort'])){
             return '排序不正确';

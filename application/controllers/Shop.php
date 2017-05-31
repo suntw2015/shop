@@ -30,9 +30,14 @@ class Shop extends APP_Controller{
             $category_id = $value['category_id'];
             $product_id = $value['product_id'];
 
+            if(!isset($newCategory[$category_id])){
+                continue;
+            }
+
             if(!isset($categoryProduct[$category_id])){
                 $categoryProduct[$category_id] = array(
                     'categoryId'    => $category_id,
+                    'categorySort'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['sort'] : 0,
                     'categoryName'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['name'] : '',
                     'categoryDesc'  => isset($newCategory[$category_id]) ? $newCategory[$category_id]['desc'] : '',
                     'productList'   => array()    
@@ -44,11 +49,15 @@ class Shop extends APP_Controller{
             }
         }
 
-        foreach($newCategory as $key=>$value){
-            if(!isset($categoryProduct[$key]) || empty($categoryProduct[$key]['productList'])){
-                unset($newCategory[$key]);
+        foreach($categoryProduct as $key=>$value){
+            if(empty($value['productList'])){
+                unset($categoryProduct[$key]);
             }
         }
+
+        $categorySortWeight = array_column($categoryProduct,'categorySort');
+        $categoryId = array_column($categoryProduct,'categoryId');
+        array_multisort($categoryProduct,SORT_DESC,$categorySortWeight,SORT_ASC,$categoryId);
         
         //产品倒排分类索引
         $productCategoryIndex = array();
@@ -60,7 +69,6 @@ class Shop extends APP_Controller{
 
         $this->render('shop/index.html',array(
             'shop'  => $shopInfo,
-            'category'  => $newCategory,
             'categoryProduct'   => $categoryProduct,
             'product'   => json_encode($product),
             'productCategoryIndex'  => json_encode($productCategoryIndex)
