@@ -45,7 +45,7 @@ class Shop extends APP_Controller{
         }
 
         foreach($newCategory as $key=>$value){
-            if(!isset($categoryProduct[$key])){
+            if(!isset($categoryProduct[$key]) || empty($categoryProduct[$key]['productList'])){
                 unset($newCategory[$key]);
             }
         }
