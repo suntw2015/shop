@@ -145,10 +145,13 @@ class Order extends APP_Controller{
 			$oid = $this->createOid();
 		}
 
+		$shopInfo = $this->Shop_model->get();
+
 		$orderInfo = array(
 			'oid'		=> $oid,
 			'user_id'	=> $this->userInfo['id'],
-			'price'		=> array_sum(array_column($orderItem,"total_price")),
+			'delivery_fee'	=> $shopInfo['delivery_fee'],
+			'price'		=> array_sum(array_column($orderItem,"total_price"))+$shopInfo['delivery_fee'],
 			'item_count'=> array_sum(array_column($orderItem,"count")),
 			'status'	=> 1,
 			'create_by'	=> 1

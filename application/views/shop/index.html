@@ -286,7 +286,9 @@
                     </span>
                     <div>
                         <p class="cartview-1e1-r" id="totalPrice">¥0</p> 
-                        <!--<p class="cartview-3w26Z">配送费¥7</p>-->
+                        {if !empty($shop.delivery_fee)}
+                        <p class="cartview-3w26Z">配送费¥{$shop.delivery_fee}</p>
+                        {/if}
                     </div> 
                     
                     <!--cartview--ijcs 灰色和绿色-->

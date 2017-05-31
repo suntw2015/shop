@@ -95,10 +95,12 @@
                 </li>
                 {/foreach}
             </ul>
-            <!--<div data-v-0701a830="" class="fee">
-                <div data-v-0701a830="">餐盒</div>
-                <div data-v-0701a830="">¥1.5</div>
-            </div>-->
+            {if !empty($shopInfo.delivery_fee)}
+            <div data-v-0701a830="" class="fee">
+                <div data-v-0701a830="">配送费</div>
+                <div data-v-0701a830="">¥{$shopInfo.delivery_fee}</div>
+            </div>
+            {/if}
             <div data-v-0701a830="" class="total">
                 <div data-v-0701a830="">
                     <span data-v-0701a830="">订单 ¥{$orderInfo['price']}</span>&nbsp;&nbsp;
