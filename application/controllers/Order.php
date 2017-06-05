@@ -218,7 +218,7 @@ class Order extends APP_Controller{
 			'shopInfo'	=> $shopInfo,
 			'isShowBack'	=> true,
 			'title'			=> '订单详情',
-			'backUrl'		=> '/order'
+			'backUrl'		=> '/order/index'
 		));
 	}
 
