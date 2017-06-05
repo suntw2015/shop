@@ -206,7 +206,7 @@ var shopPage = {
 
         var totalPrice = 0;
         for(i in this.shopCarList){
-            totalPrice += parseInt(this.shopCarList[i]['total_price']);
+            totalPrice += parseFloat(this.shopCarList[i]['total_price']);
         }
 
         if(totalPrice > 0 && this.context.submit.hasClass("cartview--ijcs")){
