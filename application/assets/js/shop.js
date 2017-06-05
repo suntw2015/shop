@@ -31,7 +31,7 @@ var shopPage = {
         for(i in data){
             pid = parseInt(data[i]['id']);
             name = data[i]['name'];
-            price = parseInt(data[i]['price']);
+            price = parseFloat(data[i]['price']);
 
             this.productInfo[pid] = {'id':pid,'name':name,'price':price};
         }
