@@ -17,7 +17,7 @@ Class CI_SmsCenter{
         //新订单通知管理者
         'new_order_manage'  => array(
             'sign_name'     => '粮仓良铺',
-            'template_code' => 'SMS_77370100'
+            'template_code' => 'SMS_77450068'
         )
     );
 

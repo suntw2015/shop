@@ -102,14 +102,16 @@ class Order extends APP_Controller{
 		if(!empty($shopInfo['phone'])){
 			try{
 				$orderItemList = $this->Order_Item_model->getListByOid($oid);
-				$buyinfo = '';
+				$buyinfo = 0;
 
 				foreach($orderItemList as $key=>$value){
-					$buyinfo .= $value['item_name'] . '*' . $value['item_count'];
+					$buyinfo += (int)$value['item_count'];
 				}
 
+				$buyinfo .= '件商品';
+
 				$this->load->library('SmsCenter');
-				$sms_body = array('username'=>$data['recev_name'],'buyinfo'=>$buyinfo,'address'=>$data['address'],'phone'=>$data['phone']);
+				$sms_body = array('username'=>$data['recev_name'],'buyinfo'=>$buyinfo,'phone'=>$data['phone']);
 				$sms_body = json_encode($sms_body);
 
 				$sms_type = 'new_order_manage';
