@@ -36,6 +36,10 @@ class Shop_model extends APP_Model{
             $this->db->set('delivery_fee',$data['delivery_fee']);
         }
 
+        if(!empty($data['phone']) && is_string($data['phone'])){
+            $this->db->set('phone',$data['phone']);
+        }
+
         if(!empty($data['notice']) && is_string($data['notice'])){
             $this->db->set('notice',$data['notice']);
         }

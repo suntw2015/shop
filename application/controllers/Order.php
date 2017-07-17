@@ -95,6 +95,37 @@ class Order extends APP_Controller{
 		if(!is_int($res) || $res < 1){
 			$this->return_fail($res);
 		}
+
+		//发送短信
+		$shopInfo = $this->Shop_model->get();
+		if(!empty($shopInfo['phone'])){
+			try{
+				$orderItemList = $this->Order_Item_model->getListByOid($oid);
+				$buyinfo = '';
+
+				foreach($orderItemList as $key=>$value){
+					$buyinfo .= $value['item_name'] . '*' . $value['item_count'];
+				}
+
+				$this->load->library('SmsCenter');
+				$sms_body = array('username'=>$orderInfo['recev_name'],'buyinfo'=>$buyinfo,'address'=>$orderInfo['address'],'phone'=>$orderInfo['phone']);
+				
+				$sms_type = 'new_order_manage';
+				$res = $this->smscenter->send($sms_type,$shopInfo['phone'],$sms_body);
+
+				$this->load->model('Sms_Model');
+				$sms_id = $this->Sms_Model->create(array(
+					'phone'			=> $shopInfo['phone'],
+					'type'			=> $sms_type,
+					'content'		=> $sms_body,
+					'status'		=> !$res['code'],
+					'fail_reason'	=> $res['code'] ? $res['msg'] : '',
+					'create_id'		=> 1
+				));
+			}catch(Exception $e){
+				
+			}
+		}
 		
 		$this->return_success('/order/detail?oid='.$data['oid']);
 	}
