@@ -109,7 +109,7 @@ class Order extends APP_Controller{
 				}
 
 				$this->load->library('SmsCenter');
-				$sms_body = array('username'=>$orderInfo['recev_name'],'buyinfo'=>$buyinfo,'address'=>$orderInfo['address'],'phone'=>$orderInfo['phone']);
+				$sms_body = array('username'=>$data['recev_name'],'buyinfo'=>$buyinfo,'address'=>$data['address'],'phone'=>$data['phone']);
 				$sms_body = json_encode($sms_body);
 
 				$sms_type = 'new_order_manage';
