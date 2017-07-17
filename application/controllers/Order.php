@@ -91,6 +91,7 @@ class Order extends APP_Controller{
 		if($orderInfo['status'] >= 2){
 			$this->return_fail("订单已经确认过了");
 		}
+
 		$res = $this->Order_model->confirm($data);
 		if(!is_int($res) || $res < 1){
 			$this->return_fail($res);
@@ -109,12 +110,13 @@ class Order extends APP_Controller{
 
 				$this->load->library('SmsCenter');
 				$sms_body = array('username'=>$orderInfo['recev_name'],'buyinfo'=>$buyinfo,'address'=>$orderInfo['address'],'phone'=>$orderInfo['phone']);
-				
+				$sms_body = json_encode($sms_body);
+
 				$sms_type = 'new_order_manage';
 				$res = $this->smscenter->send($sms_type,$shopInfo['phone'],$sms_body);
 
-				$this->load->model('Sms_Model');
-				$sms_id = $this->Sms_Model->create(array(
+				$this->load->model('Sms_model');
+				$sms_id = $this->Sms_model->create(array(
 					'phone'			=> $shopInfo['phone'],
 					'type'			=> $sms_type,
 					'content'		=> $sms_body,

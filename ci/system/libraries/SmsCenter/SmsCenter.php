@@ -10,8 +10,8 @@ include_once 'Dysmsapi/Request/V20170525/QuerySendDetailsRequest.php';
 Class CI_SmsCenter{
 
     //阿里云短信配置
-    private static $aliKeyId = '';
-    private static $alikeySecret = '';
+    private static $aliKeyId = 'LTAIBsk9iaBZVcE0';
+    private static $alikeySecret = 'ind9olW3ILz8qIZIRPd2qMlSnAJsRX';
 
     private static $config = array(
         //新订单通知管理者
@@ -41,9 +41,6 @@ Class CI_SmsCenter{
             $res['msg'] = '短信变量列表为空';
             return $res;
         }
-
-        $data = json_encode($data);
-        $data = '';
 
         $smsConfig = self::$config[$sms_name];
 
