@@ -161,6 +161,10 @@ $("#submit").click(function(){
     var tag = $("#order_tag").text();
     var note = $("#order_note").data("note");
 
+    if(!address.search(tag)){
+        address = address.substr(tag.length);
+    }
+
     if(recev_name == '' || phone == '' || address == ''){
         alert('请选择收货地址');
         return;
