@@ -290,7 +290,13 @@
                     </div> 
                     
                     <!--cartview--ijcs 灰色和绿色-->
-                    <a href="javascript:" class="cartview-3Obmk cartview--ijcs" id="submit">去结算</a>
+                    <a href="javascript:" class="cartview-3Obmk cartview--ijcs" id="submit">
+                        {if $lowestCost eq 0}
+                        去结算
+                        {else}
+                        ¥{$lowestCost}起送
+                        {/if}
+                    </a>
             </div>
         </footer>
     </div>
