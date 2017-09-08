@@ -317,7 +317,7 @@ var shopPage = {
             $(this).text('');
         })
 
-        var submitDesc = this.context.lowestCost == 0 ? '去结算' : "¥"+this.lowestCost+"起送";
+        var submitDesc = this.lowestCost == 0 ? '去结算' : "¥"+this.lowestCost+"起送";
         this.context.submit.text(submitDesc);
     },
     submitClick:function(){
