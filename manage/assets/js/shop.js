@@ -28,6 +28,7 @@ var shopPage = {
         this.context.cover_img      = $("#cover_img");
         this.context.delivery       = $("#delivery");
         this.context.delivery_fee   = $("#delivery_fee");
+        this.context.lowest_cost    = $("#lowest_cost");
         this.context.phone          = $("#phone");
         this.context.notice         = $("#notice");
         this.context.activity_icon  = $("#activity_icon");
@@ -48,6 +49,7 @@ var shopPage = {
         var cover_img = this.context.cover_img.val();
         var delivery = this.context.delivery.val();
         var delivery_fee = this.context.delivery_fee.val();
+        var lowest_cost = this.context.lowest_cost.val();
         var phone = this.context.phone.val();
         var notice = this.context.notice.val();
         var activity_icon = this.context.activity_icon.val();
@@ -59,6 +61,7 @@ var shopPage = {
             "cover_img":cover_img,
             "delivery":delivery,
             "delivery_fee":delivery_fee,
+            "lowest_cost" : lowest_cost,
             "phone":phone,
             "notice":notice,
             "activity_icon":activity_icon,
