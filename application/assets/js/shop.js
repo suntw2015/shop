@@ -16,6 +16,8 @@ Function.prototype.toEventHandler = function (c) {
 var shopPage = {
     context:{},
 
+    lowestCost:0,
+
     productInfo:{},
 
     productCategoryIndex:{},
@@ -25,6 +27,10 @@ var shopPage = {
     init:function(){
         this.initDOM();
         this.initEvent();
+    },
+
+    setLowestCost:function(value){
+        this.lowestCost = value;
     },
 
     setProductData:function(data){
@@ -215,7 +221,31 @@ var shopPage = {
             this.context.submit.addClass("cartview--ijcs");
         }
 
+        var submitDesc = '';
+        if(totalPrice > this.lowestCost){
+            if(this.context.submit.hasClass("cartview--ijcs")){
+                this.context.submit.removeClass("cartview--ijcs");
+            }
+        }else{
+            if(!this.context.submit.hasClass("cartview--ijcs")){
+                this.context.submit.addClass("cartview--ijcs");
+            }
+        }
+
+        if(this.lowestCost == 0){
+            submitDesc = '去结算';
+        }else{
+            if(totalPrice == 0){
+                submitDesc = "¥"+this.lowestCost+"起送";
+            }else if(totalPrice < this.lowestCost){
+                submitDesc = "还差¥" + (this.lowestCost - totalPrice) + "起送";
+            }else{
+                submitDesc = "去结算";
+            }
+        }
+
         this.context.totalPrice.text(totalPrice);
+        this.context.submit.text(submitDesc);
     },
     adjustCategoryNum:function(type,id){
 
@@ -286,6 +316,9 @@ var shopPage = {
         this.context.categoryList.find("span[tag=count]").each(function(){
             $(this).text('');
         })
+
+        var submitDesc = this.context.lowestCost == 0 ? '去结算' : "¥"+this.lowestCost+"起送";
+        this.context.submit.text(submitDesc);
     },
     submitClick:function(){
         if(this.context.submit.hasClass("cartview--ijcs")){
@@ -307,5 +340,6 @@ var shopPage = {
 $(document).ready(function(){
     shopPage.init();
     shopPage.setProductData(product);
+    shopPage.setLowestCost(lowestCost);
     shopPage.setProductCategoryIndexData(productCategoryIndex);
 });

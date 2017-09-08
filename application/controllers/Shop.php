@@ -70,10 +70,13 @@ class Shop extends APP_Controller{
             $productCategoryIndex[$product_id] = $category_id;
         }
 
+        $lowestCost = isset($shopInfo['lowest_cost']) ? (int)$shopInfo['lowest_cost'] : 0;
+
         $this->render('shop/index.html',array(
             'shop'  => $shopInfo,
             'categoryProduct'   => $categoryProduct,
             'product'   => json_encode($product),
+            'lowestCost'   => $lowestCost,
             'productCategoryIndex'  => json_encode($productCategoryIndex)
         ));
     }
