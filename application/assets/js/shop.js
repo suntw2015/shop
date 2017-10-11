@@ -197,11 +197,13 @@ var shopPage = {
                 }else{
                     this.shopCarList[pid]['count'] += 1;
                     this.shopCarList[pid]['total_price'] += this.productInfo[pid]['price'];
+                    this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['total_price'].toFixed(2);
                 }
                 break;
             case 'minus':
                 this.shopCarList[pid]['count'] -= this.shopCarList[pid]['count'] > 0 ? 1 : 0;
                 this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['count'] * this.shopCarList[pid]['price'];
+                this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['total_price'].toFixed(2);
                 break;
             default:
                 break; 
@@ -214,6 +216,8 @@ var shopPage = {
         for(i in this.shopCarList){
             totalPrice += parseFloat(this.shopCarList[i]['total_price']);
         }
+
+        totalPrice = totalPrice.toFixed(2);
 
         if(totalPrice > 0 && this.context.submit.hasClass("cartview--ijcs")){
             this.context.submit.removeClass("cartview--ijcs");
