@@ -196,14 +196,12 @@ var shopPage = {
                     this.shopCarList[pid] = {"id":pid,"name":this.productInfo[pid]['name'],"count":1,"price":this.productInfo[pid]['price'],"total_price":this.productInfo[pid]['price']};
                 }else{
                     this.shopCarList[pid]['count'] += 1;
-                    this.shopCarList[pid]['total_price'] += this.productInfo[pid]['price'];
-                    this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['total_price'].toFixed(2);
+                    this.shopCarList[pid]['total_price'] = (this.shopCarList[pid]['count'] * this.productInfo[pid]['price']).toFixed(2);
                 }
                 break;
             case 'minus':
                 this.shopCarList[pid]['count'] -= this.shopCarList[pid]['count'] > 0 ? 1 : 0;
-                this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['count'] * this.shopCarList[pid]['price'];
-                this.shopCarList[pid]['total_price'] = this.shopCarList[pid]['total_price'].toFixed(2);
+                this.shopCarList[pid]['total_price'] = (this.shopCarList[pid]['count'] * this.productInfo[pid]['price']).toFixed(2);
                 break;
             default:
                 break; 
